@@ -36,7 +36,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO" + ProductDAODataSource.TABLE_NAME +
-				" (NAME, DESCRIPTION, PRICE, QUANTITY VALUES (?, ?, ?, ?)";
+				" (NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
@@ -59,18 +59,18 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 	}
 
 	@Override
-	public boolean doDelete(int code) throws SQLException {
+	public boolean doDelete(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		int result = 0;
 		
 		String deleteSQL = "DELETE FROM " + 
-				ProductDAODataSource.TABLE_NAME + " WHERE CODE = ?";
+				ProductDAODataSource.TABLE_NAME + " WHERE ID = ?";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setInt(1, id);
 
 			result = preparedStatement.executeUpdate();
 
