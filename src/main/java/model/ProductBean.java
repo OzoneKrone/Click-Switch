@@ -11,6 +11,7 @@ public class ProductBean implements Serializable{
 	private String description;
 	private float price;
 	private int quantity;
+	private Boolean isAvailable;
 	
 	public int getId() {
 		return id;
@@ -51,7 +52,15 @@ public class ProductBean implements Serializable{
 		this.quantity = quantity;
 	}
 	
+	public Boolean getIsAvailable() {
+		return isAvailable;
+	}
+
+	public void setIsAvailable(Boolean is_available) {
+		this.isAvailable = is_available;
+	}
+
 	public String toString() {
-		return name + " [" + id + ", " + price + ", " + description + ", " + quantity + "]";
+		return name + " [" + id + ", " + price + ", " + description + ", " + quantity + ", available: " + isAvailable +"]";
 	}
 }

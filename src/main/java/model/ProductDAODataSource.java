@@ -36,7 +36,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 		PreparedStatement preparedStatement = null;
 		
 		String insertSQL = "INSERT INTO" + ProductDAODataSource.TABLE_NAME +
-				" (NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?)";
+				" (NAME, DESCRIPTION, PRICE, QUANTITY, IS_AVAILABLE) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
@@ -45,6 +45,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 			preparedStatement.setString(2, product.getDescription());
 			preparedStatement.setFloat(3, product.getPrice());
 			preparedStatement.setInt(4, product.getQuantity());
+			preparedStatement.setBoolean(5, product.getIsAvailable());
 			
 			preparedStatement.executeUpdate();
 		} finally {
@@ -103,6 +104,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 				bean.setDescription(rs.getString("DESCRIPTION"));
 				bean.setPrice(rs.getFloat("PRICE"));
 				bean.setQuantity(rs.getInt("QUANTITY"));
+				bean.setIsAvailable(rs.getBoolean("IS_AVAILABLE"));
 			}
 		} finally {
 			try {
@@ -143,6 +145,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 				bean.setDescription(rs.getString("DESCRIPTION"));
 				bean.setPrice(rs.getInt("PRICE"));
 				bean.setQuantity(rs.getInt("QUANTITY"));
+				bean.setIsAvailable(rs.getBoolean("IS_AVAILABLE"));
 				products.add(bean);
 			}
 

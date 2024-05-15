@@ -30,6 +30,7 @@
             <th>Descrizione</th>
             <th>Prezzo</th>
             <th>Quantità</th>
+            <th>Disponibile</th>
         </tr>
         <% for (ProductBean product : products) { %>
             <tr>
@@ -38,6 +39,7 @@
                 <td><%= product.getDescription() %></td>
                 <td><%= product.getPrice() %></td>
                 <td><%= product.getQuantity() %></td>
+                <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
             </tr>
         <% } %>
     </table>
