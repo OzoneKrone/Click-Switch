@@ -14,6 +14,7 @@ public class UserBean implements Serializable{
 	private String role;
 	
 	
+	
 	public String toString() {
 		return "[" + username + ", " + email + ", " + name + ", " + address + "]";
 	}
