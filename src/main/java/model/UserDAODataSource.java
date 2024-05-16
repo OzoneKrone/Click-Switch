@@ -34,8 +34,7 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO" + UserDAODataSource.TABLE_NAME +
-				" (USERNAME, EMAIL, HASH_PASSWORD, NAME, ADDRESS, ROLE) VALUES (?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO clickswitch.user_account (USERNAME, EMAIL, HASH_PASSWORD, NAME, ADDRESS, ROLE) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();

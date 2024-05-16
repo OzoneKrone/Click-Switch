@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null && user.getPassword() != null && user.getPassword().equals(toHash(password))) {
             HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
-            response.sendRedirect("index.html"); // Redirigi alla pagina principale o alla dashboard
+            response.sendRedirect("index.jsp"); // Redirigi alla pagina principale o alla dashboard
         } else {
             request.setAttribute("error", "Invalid username or password");
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
