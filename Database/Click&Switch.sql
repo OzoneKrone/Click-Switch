@@ -6,7 +6,7 @@ create table user_account
 (
 	username varchar(50) PRIMARY KEY NOT NULL,
     email varchar(50) UNIQUE NOT NULL,
-    passwrd varchar(50) NOT NULL,
+    hash_password varchar(200) NOT NULL,
     name varchar(50) NOT NULL,
     address varchar(50) NOT NULL,
     role enum('user', 'admin') NOT NULL
@@ -18,6 +18,7 @@ CREATE TABLE product (
     price DECIMAL(10,2) NOT NULL,
     description VARCHAR(200),
     quantity INT NOT NULL,
+    is_available BOOL NOT NULL,
     image BLOB DEFAULT NULL
 );
 
