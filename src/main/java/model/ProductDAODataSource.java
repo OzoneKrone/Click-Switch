@@ -27,7 +27,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 		}
 	}
 	
-	private static final String TABLE_NAME = "product";
+	private static final String TABLE_NAME = "clickswitch.product";
 
 	@Override
 	public synchronized void doSave(ProductBean product) throws SQLException {
@@ -35,8 +35,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO" + ProductDAODataSource.TABLE_NAME +
-				" (NAME, DESCRIPTION, PRICE, QUANTITY, IS_AVAILABLE) VALUES (?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO " + TABLE_NAME + " (NAME, DESCRIPTION, PRICE, QUANTITY, IS_AVAILABLE) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();

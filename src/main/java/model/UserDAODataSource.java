@@ -26,7 +26,7 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 		}
 	}
 	
-	private static final String TABLE_NAME = "user_account";
+	private static final String TABLE_NAME = "clickswitch.user_account";
 
 	@Override
 	public synchronized void doSave(UserBean user) throws SQLException {
@@ -34,7 +34,7 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO clickswitch.user_account (USERNAME, EMAIL, HASH_PASSWORD, NAME, ADDRESS, ROLE) VALUES (?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO " + TABLE_NAME + " (USERNAME, EMAIL, HASH_PASSWORD, NAME, ADDRESS, ROLE) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
