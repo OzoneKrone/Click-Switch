@@ -1,0 +1,78 @@
+/*@import url(https://db.onlinewebfonts.com/c/513071b47bdba774c93a73ad16a75e3b?family=DIN+Next+LT+Arabic+Bold);
+*/
+@font-face {
+  font-family: 'DIN'; /* Name your font family */
+  src: url('DIN Next LT Arabic Bold.ttf'); /* Locate the .ttf file within your directory*/
+}
+
+@font-face {
+  font-family: 'Segoe'; /* Name your font family */
+  src: url('Segoe UI Symbol.ttf'); /* Locate the .ttf file within your directory*/
+}
+
+body{
+	font-family: "Segoe";
+	font-weight: 400;
+	line-height: 14px;
+	color: #19231a;
+	font-size: 16px;
+	background-color: #efe6dd;
+	
+	/* Font smoothing / Antialiasing */
+	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
+	-moz-osx-font-smoothing: grayscale;   /* For macOS */
+	font-smooth: always;                  /* General */
+}
+
+h1{
+	font-family: "DIN";
+	font-weight: 800;
+	line-height: 24px;
+	font-size: 42px;
+	color: #19231a;
+	
+	/* Font smoothing / Antialiasing */
+	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
+	-moz-osx-font-smoothing: grayscale;   /* For macOS */
+	font-smooth: always;                  /* General */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px 30px 20px;
+    background-color: #efe6dd;
+    color: white;
+}
+
+.logo img {
+    height: 40px; /* Adjust the height of your logo */
+    margin-left: 40px;
+}
+
+.links {
+    flex-grow: 1;
+    text-align: center;
+    color: #19231a;
+}
+
+.links a {
+    margin: 0 10px;
+    color: #19231a;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.actions a {
+    margin-left: 20px;
+    
+    color: #19231a;
+    text-decoration: none;
+}
