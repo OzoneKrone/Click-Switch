@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.UserBean;
-import model.UserDAODataSource;
 
 @WebServlet("/Register")
 public class RegisterServlet extends HttpServlet {

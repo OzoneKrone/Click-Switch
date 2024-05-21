@@ -1,4 +1,4 @@
-package model;
+package control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class UserDAODataSource implements UserBeanDAO<UserBean>{
+import model.IBeanDAO;
+import model.ProductBean;
+
+public class ProductDAODataSource implements IBeanDAO<ProductBean>{
+	
 	private static DataSource ds;
 	
 	static {
@@ -26,25 +30,25 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 		}
 	}
 	
-	private static final String TABLE_NAME = "clickswitch.user_account";
+	private static final String TABLE_NAME = "clickswitch.product";
 
 	@Override
-	public synchronized void doSave(UserBean user) throws SQLException {
+	public synchronized void doSave(ProductBean product) throws SQLException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "INSERT INTO " + TABLE_NAME + " (USERNAME, EMAIL, HASH_PASSWORD, NAME, ADDRESS, ROLE) VALUES (?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO " + TABLE_NAME + " (NAME, DESCRIPTION, PRICE, QUANTITY, IS_AVAILABLE, IMAGE_URL) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, user.getUsername());
-			preparedStatement.setString(2, user.getEmail());
-			preparedStatement.setString(3, user.getPassword());
-			preparedStatement.setString(4, user.getName());
-			preparedStatement.setString(5, user.getAddress());
-			preparedStatement.setString(6, user.getRole());
+			preparedStatement.setString(1, product.getName());
+			preparedStatement.setString(2, product.getDescription());
+			preparedStatement.setFloat(3, product.getPrice());
+			preparedStatement.setInt(4, product.getQuantity());
+			preparedStatement.setBoolean(5, product.getIsAvailable());
+			preparedStatement.setString(6, product.getImageUrl());
 			
 			preparedStatement.executeUpdate();
 		} finally {
@@ -59,18 +63,18 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 	}
 
 	@Override
-	public boolean doDelete(String username) throws SQLException {
+	public boolean doDelete(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		int result = 0;
 		
 		String deleteSQL = "DELETE FROM " + 
-				UserDAODataSource.TABLE_NAME + " WHERE USERNAME = ?";
+				ProductDAODataSource.TABLE_NAME + " WHERE ID = ?";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, username);
+			preparedStatement.setInt(1, id);
 
 			result = preparedStatement.executeUpdate();
 
@@ -87,23 +91,24 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 	}
 
 	@Override
-	public UserBean doRetrieveByKey(String username) throws SQLException {
+	public ProductBean doRetrieveByKey(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		UserBean bean = new UserBean();
-		String selectSQL = "SELECT * FROM " + UserDAODataSource.TABLE_NAME + " WHERE USERNAME = ?";
+		ProductBean bean = new ProductBean();
+		String selectSQL = "SELECT * FROM " + ProductDAODataSource.TABLE_NAME + " WHERE CODE = ?";
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, username);
+			preparedStatement.setInt(1, code);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				bean.setUsername(rs.getString("USERNAME"));
-				bean.setEmail(rs.getString("EMAIL"));
-				bean.setPassword(rs.getString("HASH_PASSWORD"));
+				bean.setId(rs.getInt("ID"));
 				bean.setName(rs.getString("NAME"));
-				bean.setAddress(rs.getString("ADDRESS"));
-				bean.setRole(rs.getString("ROLE"));
+				bean.setDescription(rs.getString("DESCRIPTION"));
+				bean.setPrice(rs.getFloat("PRICE"));
+				bean.setQuantity(rs.getInt("QUANTITY"));
+				bean.setIsAvailable(rs.getBoolean("IS_AVAILABLE"));
+				bean.setImageUrl(rs.getString("IMAGE_URL"));
 			}
 		} finally {
 			try {
@@ -118,13 +123,13 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 	}
 
 	@Override
-	public Collection<UserBean> doRetrieveAll(String order) throws SQLException {
+	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		Collection<UserBean> Users = new LinkedList<UserBean>();
+		Collection<ProductBean> products = new LinkedList<ProductBean>();
 
-		String selectSQL = "SELECT * FROM " + UserDAODataSource.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + ProductDAODataSource.TABLE_NAME;
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
@@ -137,15 +142,15 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				UserBean bean = new UserBean();
+				ProductBean bean = new ProductBean();
 
-				bean.setUsername(rs.getString("USERNAME"));
-				bean.setEmail(rs.getString("EMAIL"));
-				bean.setPassword(rs.getString("HASH_PASSWORD"));
+				bean.setId(rs.getInt("ID"));
 				bean.setName(rs.getString("NAME"));
-				bean.setAddress(rs.getString("ADDRESS"));
-				bean.setRole(rs.getString("ROLE"));
-				Users.add(bean);
+				bean.setDescription(rs.getString("DESCRIPTION"));
+				bean.setPrice(rs.getInt("PRICE"));
+				bean.setQuantity(rs.getInt("QUANTITY"));
+				bean.setIsAvailable(rs.getBoolean("IS_AVAILABLE"));
+				products.add(bean);
 			}
 
 		} finally {
@@ -157,6 +162,6 @@ public class UserDAODataSource implements UserBeanDAO<UserBean>{
 					connection.close();
 			}
 		}
-		return Users;
+		return products;
 	}
 }

@@ -1,4 +1,4 @@
-package model;
+package control;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

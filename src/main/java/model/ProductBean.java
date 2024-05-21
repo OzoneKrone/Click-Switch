@@ -12,6 +12,7 @@ public class ProductBean implements Serializable{
 	private float price;
 	private int quantity;
 	private Boolean isAvailable;
+	private String imageUrl;
 	
 	public int getId() {
 		return id;
@@ -62,5 +63,13 @@ public class ProductBean implements Serializable{
 
 	public String toString() {
 		return name + " [" + id + ", " + price + ", " + description + ", " + quantity + ", available: " + isAvailable +"]";
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }
