@@ -150,6 +150,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 				bean.setPrice(rs.getInt("PRICE"));
 				bean.setQuantity(rs.getInt("QUANTITY"));
 				bean.setIsAvailable(rs.getBoolean("IS_AVAILABLE"));
+				bean.setImageUrl(rs.getString("IMAGE_URL"));
 				products.add(bean);
 			}
 

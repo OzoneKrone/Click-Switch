@@ -20,8 +20,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Prodotti</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
+	<!-- Include della barra di navigazione -->
+    <jsp:include page="navbar.jsp" />
+	
     <h1>Lista Prodotti</h1>
     <table border="1">
         <tr>
@@ -41,7 +45,7 @@
                 <td><%= product.getPrice() %></td>
                 <td><%= product.getQuantity() %></td>
                 <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
-                <td><img src="images/keyb.jpg" alt="Logo"></td>
+                <td><img src=<%= product.getImageUrl() %> alt="No Image"></td>
             </tr>
         <% } %>
     </table>
