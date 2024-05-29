@@ -6,7 +6,7 @@ VALUES
     ('admin', 'admin1@example.com', '5b722b307fce6c944905d132691d5e4a2214b7fe92b738920eb3fce3a90420a19511c3010a0e7712b054daef5b57bad59ecbd93b3280f210578f547f4aed4d25', 'Admin One', '789 Oak Street', 'admin');
 
 -- Popolamento della tabella product
-INSERT INTO product (name, price, description, quantity, is_available, image)
+INSERT INTO product (name, price, description, quantity, is_available, image_url)
 VALUES 
     ('Qisan 68', 59.99, 'Mechanical keyboard with white lighting', 50, true, NULL),
     ('Razer BlackWidow', 129.99, 'Mechanical keyboard with RBG Chroma Lighting', 100, true, NULL),
@@ -14,7 +14,8 @@ VALUES
     ('Keychron Q1', 229.99, 'Permium Mechanical keyboard with RBG and Hot-Swappable Sockets', 100, true, NULL),
     ('Akko 3502', 200.99, 'Gaming mouse with adjustable DPI', 100, true, NULL),
     ('Cherry Red Switches', 29.99, '5-Pin Keyboard switches (Pack of 25)', 100, true, NULL),
-    ('NK65', 119.99, 'Barebone DYI Keyboard Kit', 100, true, NULL);
+    ('NK65', 119.99, 'Barebone DYI Keyboard Kit', 100, true, NULL),
+    ('GMK65', 119.99, 'Keyboard', 100, true, 'images/keyb.jpg');
 
 -- Popolamento della tabella user_order
 INSERT INTO user_order (date_time, status, total, username)

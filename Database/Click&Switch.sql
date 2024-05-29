@@ -19,14 +19,14 @@ CREATE TABLE product (
     description VARCHAR(200),
     quantity INT NOT NULL,
     is_available BOOL NOT NULL,
-    image BLOB DEFAULT NULL
+    image_url VARCHAR(255)
 );
 
 CREATE TABLE user_order (
     id INT PRIMARY KEY AUTO_INCREMENT,
     date_time DATETIME NOT NULL,
     status ENUM('placed', 'shipped', 'delivered') NOT NULL,
-    total DECIMAL(10,2) NOT NULL,
+    total DECIMAL(6,2) NOT NULL,
     username VARCHAR(50) NOT NULL,
     FOREIGN KEY (username) REFERENCES user_account(username)
 );

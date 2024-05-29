@@ -9,3 +9,5 @@ SELECT * FROM user_order;
 
 -- Visualizzazione dei dati della tabella order_items
 SELECT * FROM order_items;
+
+SELECT * FROM user_order WHERE username = 'user1';
