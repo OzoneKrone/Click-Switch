@@ -165,4 +165,28 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 		}
 		return products;
 	}
+	
+	public void setProductAvailability(int productId, boolean isAvailable) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String updateSQL = "UPDATE " + TABLE_NAME + " SET is_available = ? WHERE id = ?";
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(updateSQL);
+            preparedStatement.setBoolean(1, isAvailable);
+            preparedStatement.setInt(2, productId);
+
+            preparedStatement.executeUpdate();
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+    }
 }

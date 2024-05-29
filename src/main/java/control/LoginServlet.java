@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
     private String toHash(String password) {
         String hashString = null;
         try {
-            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-512");
             byte[] hash = digest.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
             hashString = "";
             for (int i = 0; i < hash.length; i++) {

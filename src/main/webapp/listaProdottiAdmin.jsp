@@ -29,19 +29,31 @@
     <h1>Lista Prodotti</h1>
     <table border="1">
         <tr>
+            <th>ID</th>
             <th>Nome</th>
             <th>Descrizione</th>
             <th>Prezzo</th>
+            <th>Quantità</th>
+            <th>Disponibile</th>
             <th>Immagine</th>
         </tr>
         <% for (ProductBean product : products) { %>
             <tr>
-            	<%if (product.getIsAvailable()) {%>
-	                <td><%= product.getName() %></td>
-	                <td><%= product.getDescription() %></td>
-	                <td><%= product.getPrice() %></td>
-	                <td><img src=<%= product.getImageUrl() %> alt="No Image"></td>
-	            <%} %>
+                <td><%= product.getId() %></td>
+                <td><%= product.getName() %></td>
+                <td><%= product.getDescription() %></td>
+                <td><%= product.getPrice() %></td>
+                <td><%= product.getQuantity() %></td>
+                <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
+                <td><img src=<%= product.getImageUrl() %> alt="No Image"></td>
+                <td>
+                	<%if (product.getIsAvailable()) {%>
+                    <form action="DeleteProduct" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
+                        <input type="hidden" name="productId" value="<%= product.getId() %>">
+                        <button type="submit">Elimina</button>
+                    </form>
+                    <%}%>
+                </td>
             </tr>
         <% } %>
     </table>
