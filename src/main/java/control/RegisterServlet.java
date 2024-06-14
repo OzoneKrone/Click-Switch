@@ -37,7 +37,9 @@ public class RegisterServlet extends HttpServlet {
         UserBean user = new UserBean();
         user.setUsername(username);
         user.setEmail(email);
-        user.setPassword(toHash(password)); // Hash della password
+        // Crittografa la password prima di salvarla nel database
+        String hashedPassword = hashPassword(password);
+        user.setPassword(hashedPassword);
         user.setName(name);
         user.setAddress(address);
         user.setRole("user"); // Imposta il ruolo predefinito
@@ -53,7 +55,8 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 
-    private String toHash(String password) {
+    // Metodo per crittografare la password utilizzando SHA-512
+    private String hashPassword(String password) {
         try {
             java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-512");
             byte[] hash = digest.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));

@@ -33,6 +33,7 @@
             <th>Descrizione</th>
             <th>Prezzo</th>
             <th>Immagine</th>
+            <th>Aggiungi al Carrello</th>
         </tr>
         <% for (ProductBean product : products) { %>
             <tr>
@@ -41,6 +42,12 @@
 	                <td><%= product.getDescription() %></td>
 	                <td><%= product.getPrice() %></td>
 	                <td><img src=<%= product.getImageUrl() %> alt="No Image"></td>
+	                <td>
+                    <form action="AddToCartServlet" method="post">
+                        <input type="hidden" name="productId" value="<%= product.getId() %>">
+                        <button type="submit">Aggiungi al Carrello</button>
+                    </form>
+               		</td>
 	            <%} %>
             </tr>
         <% } %>

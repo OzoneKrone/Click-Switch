@@ -23,10 +23,10 @@
         <a href="listaProdotti.jsp">Prodotti</a>
     </div>
     <div class="actions">
-        <a href="#"><img src="images/cart_icon.png" alt="Cart" width="24" height="24"></a>
         <% if (currentUser == null) { %>
         <a href="login.jsp">Login</a>
         <% } else {%>
+        <a href="viewCart.jsp"><img src="images/cart_icon.png" alt="Cart" width="24" height="24"></a>
         <a href="Logout">Logout</a>
         <% }%>
     </div>

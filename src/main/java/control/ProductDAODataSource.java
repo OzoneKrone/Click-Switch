@@ -95,7 +95,7 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ProductBean bean = new ProductBean();
-		String selectSQL = "SELECT * FROM " + ProductDAODataSource.TABLE_NAME + " WHERE CODE = ?";
+		String selectSQL = "SELECT * FROM " + ProductDAODataSource.TABLE_NAME + " WHERE id = ?";
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
