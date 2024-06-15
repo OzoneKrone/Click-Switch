@@ -1,10 +1,11 @@
-package control;
+package model;
 
 import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -35,34 +36,47 @@ public class UserOrderDAODataSource implements UserOrderDAO<UserOrderBean>{
 	private static final String TABLE_NAME = "clickswitch.user_order";
 
 	@Override
-	public synchronized void doSave(UserOrderBean userOrder) throws SQLException {
-	    Connection connection = null;
-	    PreparedStatement preparedStatement = null;
+	public int doSave(UserOrderBean userOrder) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet generatedKeys = null;
 
-	    String insertSQL = "INSERT INTO " + TABLE_NAME + " (date_time, status, total, username) VALUES (?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO " + TABLE_NAME + " (date_time, status, total, username) VALUES (?, ?, ?, ?)";
 
-	    try {
-	        connection = ds.getConnection();
-	        preparedStatement = connection.prepareStatement(insertSQL);
-	        
-	        // Converte java.util.Date a java.sql.Timestamp
-	        Timestamp timestamp = new Timestamp(userOrder.getDateTime().getTime());
-	        preparedStatement.setTimestamp(1, timestamp);
-	        preparedStatement.setString(2, userOrder.getStatus());
-	        preparedStatement.setDouble(3, userOrder.getTotal());
-	        preparedStatement.setString(4, userOrder.getUsername());
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setTimestamp(1, new java.sql.Timestamp(userOrder.getDateTime().getTime()));
+            preparedStatement.setString(2, userOrder.getStatus());
+            preparedStatement.setDouble(3, userOrder.getTotal());
+            preparedStatement.setString(4, userOrder.getUsername());
 
-	        preparedStatement.executeUpdate();
-	    } finally {
-	        try {
-	            if (preparedStatement != null)
-	                preparedStatement.close();
-	        } finally {
-	            if (connection != null)
-	                connection.close();
-	        }
-	    }
-	}
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user order failed, no rows affected.");
+            }
+
+            generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int orderId = generatedKeys.getInt(1);
+                userOrder.setId(orderId); // Imposta l'ID generato sull'oggetto UserOrderBean
+                return orderId;
+            } else {
+                throw new SQLException("Creating user order failed, no ID obtained.");
+            }
+        } finally {
+            if (generatedKeys != null) {
+                generatedKeys.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
 
 	@Override
 	public boolean doDelete(String username) throws SQLException {

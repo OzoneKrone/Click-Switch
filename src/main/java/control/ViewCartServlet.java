@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.ProductBean;
-import control.ProductDAODataSource;
+import model.ProductDAODataSource;
 
 /**
  * Servlet implementation class ViewCartServlet

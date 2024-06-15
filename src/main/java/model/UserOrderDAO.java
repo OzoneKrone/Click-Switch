@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public interface UserOrderDAO<T> {
-	public void doSave(T bean) throws SQLException;
+	public int doSave(T bean) throws SQLException;
 
 	public boolean doDelete(String username) throws SQLException;
 

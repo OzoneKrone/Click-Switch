@@ -2,7 +2,7 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.Map.Entry"%>
 <%@ page import="model.ProductBean"%>
-<%@ page import="control.ProductDAODataSource"%>
+<%@ page import="model.ProductDAODataSource"%>
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="java.util.HashMap"%>
 
@@ -27,6 +27,7 @@
     } catch (SQLException e) {
         e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
     }
+    double total = 0.0;
 %>
 
 <!DOCTYPE html>
@@ -39,31 +40,48 @@
 <body>
     <!-- Include della barra di navigazione -->
     <jsp:include page="navbar.jsp" />
-    
-    <h1>Il tuo Carrello</h1>
+
+    <h1>Carrello</h1>
     <table border="1">
         <tr>
+            <th>ID Prodotto</th>
             <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
             <th>Quantità</th>
-            <th>Totale</th>
+            <th>Prezzo Unitario</th>
+            <th>Prezzo Totale</th>
         </tr>
-        <% double total = 0; %>
-        <% for (Entry<ProductBean, Integer> entry : productsInCart.entrySet()) { %>
-            <tr>
-                <td><%= entry.getKey().getName() %></td>
-                <td><%= entry.getKey().getDescription() %></td>
-                <td><%= entry.getKey().getPrice() %></td>
-                <td><%= entry.getValue() %></td>
-                <td><%= entry.getKey().getPrice() * entry.getValue() %></td>
-            </tr>
-            <% total += entry.getKey().getPrice() * entry.getValue(); %>
-        <% } %>
+        <% if (cart != null) {
+            for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+                int productId = entry.getKey();
+                int quantity = entry.getValue();
+                
+                ProductBean product = null;
+                try {
+                    product = productDAO.doRetrieveByKey(productId);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                
+                if (product != null) {
+                    double totalPrice = product.getPrice() * quantity;
+                    total += totalPrice;
+        %>
         <tr>
-            <td colspan="4">Totale</td>
-            <td><%= total %></td>
+            <td><%= product.getId() %></td>
+            <td><%= product.getName() %></td>
+            <td><%= quantity %></td>
+            <td><%= product.getPrice() %></td>
+            <td><%= totalPrice %></td>
         </tr>
+        <%          }
+            }
+        } %>
     </table>
+
+    <h2>Totale: <%= total %></h2>
+
+    <form action="checkout.jsp" method="get">
+        <input type="submit" value="Procedi al Pagamento">
+    </form>
 </body>
 </html>

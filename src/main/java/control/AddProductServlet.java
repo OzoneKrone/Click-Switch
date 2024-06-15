@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import model.ProductBean;
+import model.ProductDAODataSource;
 
 /**
  * Servlet implementation class AddProductServlet

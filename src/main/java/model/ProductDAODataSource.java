@@ -1,4 +1,4 @@
-package control;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -189,4 +189,28 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
             }
         }
     }
+	
+	public void updateQuantity(int productId, int newQuantity) throws SQLException {
+	    Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+
+	    String updateSQL = "UPDATE " + TABLE_NAME + " SET quantity = ? WHERE id = ?";
+
+	    try {
+	        connection = ds.getConnection();
+	        preparedStatement = connection.prepareStatement(updateSQL);
+	        preparedStatement.setInt(1, newQuantity);
+	        preparedStatement.setInt(2, productId);
+
+	        preparedStatement.executeUpdate();
+	    } finally {
+	        try {
+	            if (preparedStatement != null)
+	                preparedStatement.close();
+	        } finally {
+	            if (connection != null)
+	                connection.close();
+	        }
+	    }
+	}
 }
