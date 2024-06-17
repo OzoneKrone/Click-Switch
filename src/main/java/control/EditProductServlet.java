@@ -19,20 +19,20 @@ import model.ProductDAODataSource;
 /**
  * Servlet implementation class AddProductServlet
  */
-@WebServlet("/AddProduct")
+@WebServlet("/EditProduct")
 @MultipartConfig(
 	    fileSizeThreshold = 1024 * 1024 * 1,  // 1 MB
 	    maxFileSize = 1024 * 1024 * 10,       // 10 MB
 	    maxRequestSize = 1024 * 1024 * 15     // 15 MB
 	)
 
-public class AddProductServlet extends HttpServlet {
+public class EditProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddProductServlet() {
+    public EditProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,6 +41,7 @@ public class AddProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int productId = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		float price = Float.parseFloat(request.getParameter("price"));
 		String description = request.getParameter("description");
@@ -82,9 +83,10 @@ public class AddProductServlet extends HttpServlet {
             return;
         }
         
-		ProductDAODataSource productDAO = new ProductDAODataSource();
+        ProductDAODataSource productDAO = new ProductDAODataSource();
 		ProductBean product = new ProductBean();
 		
+		product.setId(productId);
 		product.setName(name);
 		product.setPrice(price);
 		product.setDescription(description);
@@ -93,7 +95,7 @@ public class AddProductServlet extends HttpServlet {
 		product.setImageUrl("images/" + fileName); // Imposta il percorso dell'immagine
 		
 		try {
-            productDAO.doSave(product);
+            productDAO.doUpdate(product);
             response.sendRedirect("listaProdottiAdmin.jsp"); // Reindirizza alla pagina di login dopo la registrazione
         } catch (SQLException e) {
             e.printStackTrace();

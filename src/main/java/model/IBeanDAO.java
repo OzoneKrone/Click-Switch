@@ -12,4 +12,6 @@ public interface IBeanDAO<T> {
 	public T doRetrieveByKey(int id) throws SQLException;
 	
 	public Collection<T> doRetrieveAll(String order) throws SQLException;
+	
+	public void doUpdate(T bean) throws SQLException;
 }

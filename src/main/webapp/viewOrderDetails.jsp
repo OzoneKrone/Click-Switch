@@ -7,7 +7,7 @@
 <%@ page import="model.UserBean" %>
     
 <%
-    // Ottieni la lista degli ordini dal database
+    // Ottieni l'ordine dal database
     UserOrderBean order = null;
 	UserBean currentUser = (UserBean) session.getAttribute("currentUser");
 	String orderIdStr = request.getParameter("orderId");

@@ -41,7 +41,7 @@
 	                <td><%= product.getName() %></td>
 	                <td><%= product.getDescription() %></td>
 	                <td><%= product.getPrice() %></td>
-	                <td><img src=<%= product.getImageUrl() %> alt="No Image"></td>
+	                <td><img src=<%= product.getImageUrl() %> alt="Missing Image" width="300" ></td>
 	                <td>
                     <form action="AddToCartServlet" method="post">
                         <input type="hidden" name="productId" value="<%= product.getId() %>">

@@ -12,9 +12,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import model.IBeanDAO;
-import model.ProductBean;
-
 public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 	
 	private static DataSource ds;
@@ -61,7 +58,52 @@ public class ProductDAODataSource implements IBeanDAO<ProductBean>{
 			}
 		}
 	}
+	
+	public synchronized void doUpdate(ProductBean product) throws SQLException {
 
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String updateSQL = "UPDATE " + TABLE_NAME
+				+ " SET NAME = ?, DESCRIPTION = ?, PRICE = ?, QUANTITY = ?, IS_AVAILABLE = ?, IMAGE_URL = ?"
+				+ " WHERE ID = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSQL);
+			preparedStatement.setString(1, product.getName());
+			preparedStatement.setString(2, product.getDescription());
+			preparedStatement.setFloat(3, product.getPrice());
+			preparedStatement.setInt(4, product.getQuantity());
+			preparedStatement.setBoolean(5, product.getIsAvailable());
+			preparedStatement.setString(6, product.getImageUrl());
+			preparedStatement.setInt(7, product.getId());
+			
+			preparedStatement.executeUpdate();
+			
+			// log per il debug
+	        System.out.println("Executing update: " + preparedStatement);
+	        System.out.println("Product ID: " + product.getId());
+	        System.out.println("Product Name: " + product.getName());
+	        System.out.println("Product Description: " + product.getDescription());
+	        System.out.println("Product Price: " + product.getPrice());
+	        System.out.println("Product Quantity: " + product.getQuantity());
+	        System.out.println("Product Is Available: " + product.getIsAvailable());
+	        System.out.println("Product Image URL: " + product.getImageUrl());
+
+	        int rowsUpdated = preparedStatement.executeUpdate();
+	        System.out.println("Rows updated: " + rowsUpdated);
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+	}
+	
 	@Override
 	public boolean doDelete(int id) throws SQLException {
 		Connection connection = null;

@@ -45,9 +45,10 @@
                 <td><%= product.getPrice() %></td>
                 <td><%= product.getQuantity() %></td>
                 <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
-                <td><img src=<%= product.getImageUrl() %> alt="No Image"></td>
+                <td><img src=<%= product.getImageUrl() %> alt="Missing Image" width="300" ></td>
                 <td>
                 	<%if (product.getIsAvailable()) {%>
+                	<a href="editProduct.jsp?productId=<%=product.getId()%>"><button>Modifica</button></a>
                     <form action="DeleteProduct" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
                         <input type="hidden" name="productId" value="<%= product.getId() %>">
                         <button type="submit">Elimina</button>
