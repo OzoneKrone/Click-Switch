@@ -9,7 +9,7 @@ public interface UserOrderDAO<T> {
 
 	public boolean doDelete(String username) throws SQLException;
 
-	public T doRetrieveByKey(String username) throws SQLException;
+	public T doRetrieveByKey(int orderId) throws SQLException;
 	
 	public Collection<T> doRetrieveAll(String order) throws SQLException;
 

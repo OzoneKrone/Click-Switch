@@ -20,6 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Utenti</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
     <h1>Lista Utenti</h1>
@@ -36,7 +37,7 @@
             <tr>
                 <td><%= user.getUsername() %></td>
                 <td><%= user.getEmail() %></td>
-                <td><%= user.getPassword() %></td>
+                <td> *** </td>
                 <td><%= user.getName() %></td>
                 <td><%= user.getAddress() %></td>
                 <td><%= user.getRole() %></td>

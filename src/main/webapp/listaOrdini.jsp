@@ -6,7 +6,7 @@
 <%@ page import="model.UserBean" %>
 
 <%
-    // Ottieni la lista dei prodotti dal database
+    // Ottieni la lista degli ordini dal database
     Collection<UserOrderBean> orders = null;
 	UserBean currentUser = (UserBean) session.getAttribute("currentUser");
 
@@ -41,6 +41,7 @@
             <th>Data</th>
             <th>Stato</th>
             <th>Totale</th>
+            <th></th>
         </tr>
         <% for (UserOrderBean order : orders) { %>
             <tr>
@@ -49,6 +50,12 @@
                 <td><%= order.getDateTime() %></td>
                 <td><%= order.getStatus() %></td>
                 <td><%= order.getTotal() %></td>
+                <td>
+                	<form action="viewOrderDetails.jsp" method="post">
+                        <input type="hidden" name="orderId" value="<%= order.getId() %>">
+                        <button type="submit">Dettagli</button>
+                    </form>
+				</td>
             </tr>
         <% } %>
     </table>

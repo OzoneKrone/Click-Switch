@@ -107,15 +107,15 @@ public class UserOrderDAODataSource implements UserOrderDAO<UserOrderBean>{
 	}
 
 	@Override
-	public UserOrderBean doRetrieveByKey(String username) throws SQLException {
+	public UserOrderBean doRetrieveByKey(int orderId) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		UserOrderBean bean = new UserOrderBean();
-		String selectSQL = "SELECT * FROM " + UserOrderDAODataSource.TABLE_NAME + " WHERE USERNAME = ?";
+		String selectSQL = "SELECT * FROM " + UserOrderDAODataSource.TABLE_NAME + " WHERE id = ?";
 		try {
 			connection = ds.getConnection();	
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, username);
+			preparedStatement.setInt(1, orderId);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				bean.setId(rs.getInt("ID"));
