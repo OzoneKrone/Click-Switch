@@ -16,6 +16,9 @@
 	<!-- Include della barra di navigazione -->
     <jsp:include page="navbar.jsp" />
 	
+	<jsp:include page="banner.jsp" />
+	
+	<p>OLD PAGE</p>
 	<p></p>
     <h1>Homepage</h1>
     

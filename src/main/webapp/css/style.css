@@ -14,7 +14,7 @@ body{
 	font-family: "Segoe";
 	font-weight: 400;
 	line-height: 14px;
-	color: #19231a;
+	
 	font-size: 16px;
 	background-color: #efe6dd;
 	
@@ -22,6 +22,12 @@ body{
 	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
 	-moz-osx-font-smoothing: grayscale;   /* For macOS */
 	font-smooth: always;                  /* General */
+	
+	padding:10px;
+	
+	a, a:visited {
+	  color: #19231a;
+	}
 }
 
 h1{
@@ -77,3 +83,62 @@ h1{
     color: #19231a;
     text-decoration: none;
 }
+
+#banner {
+	background-image: url("../images/banner.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	/*background-attachment: fixed;*/
+	background-position: center;
+   	height: 300px;
+   	width: calc(100% - 20px);
+   	resize: both;
+   	margin: 10px;
+   	position: relative;
+   	border-radius: 12px;
+}
+
+#banner-info{
+	width:150px;
+	height:100px;
+	background-color: #efe6dd;
+	position: absolute;
+	right: 30px;
+	top: 80px;
+	border-radius: 12px;
+	margin: 0 10px;
+    color: #19231a;
+    font-size: 22px;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    padding-top:30px;
+    font-size: 30px;
+   
+}
+
+#banner-info a{
+	font-family: "DIN";
+    font-size: 30px;
+}
+
+#banner-button {
+    width: 150px;
+    height: 50px;
+    background-color: #3c7a89;
+    position: absolute;
+    bottom: 10px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+}
+
+#banner-button a {
+    color: white;
+    text-decoration: none;
+    font-family: "Segoe";
+    font-size: 16px;
+}
+
