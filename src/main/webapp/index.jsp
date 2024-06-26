@@ -40,7 +40,7 @@
             }
             count++; // Incrementa il contatore
     %>
-            <a class="product-item" href="listaProdotti.jsp">
+            <a class="product-item" href="ProductServlet?id=<%= product.getId() %>">
                 <div class="product-image">
                     <img src="<%= product.getImageUrl() %>" alt="<%= product.getName() %>">
                 </div>

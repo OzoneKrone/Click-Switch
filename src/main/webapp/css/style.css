@@ -188,3 +188,74 @@ h1{
     align-items: center;
     text-decoration: none;
 }
+
+/* Container per i dettagli del prodotto */
+.product-details-container {
+	display: flex;
+	flex-direction: row;
+	gap: 20px; /* Spazio tra immagine e informazioni */
+}
+
+/* Stile per l'immagine grande del prodotto */
+.product-details-image img {
+	background-color:white;
+	width: 100%;
+	max-width: 50vw; /* Massima larghezza: metà schermo */
+	height: auto;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Stili per le informazioni del prodotto */
+.product-details-info {
+	flex: 1; /* Prende tutto lo spazio rimanente */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Nome del prodotto */
+.product-details-name {
+	font-family: "DIN";
+	font-size: 32px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: #19231a;
+}
+
+/* Prezzo del prodotto */
+.product-details-price {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #3c7a89;
+}
+
+/* Descrizione del prodotto */
+.product-details-description {
+	font-size: 16px;
+	margin-bottom: 20px;
+	color: #19231a;
+}
+
+/* Pulsante per aggiungere al carrello */
+.product-details-add-to-cart-button {
+	font-family: "Segoe";
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #3c7a89;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.product-details-add-to-cart-button:hover {
+	background-color: #2f5f6b;
+}
