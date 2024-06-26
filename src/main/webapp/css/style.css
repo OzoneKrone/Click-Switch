@@ -10,6 +10,13 @@
   src: url('Segoe UI Symbol.ttf'); /* Locate the .ttf file within your directory*/
 }
 
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
 	font-family: "Segoe";
 	font-weight: 400;
@@ -24,6 +31,8 @@ body{
 	font-smooth: always;                  /* General */
 	
 	padding:10px;
+	
+	margin: 0px 10% 0px 10%;
 	
 	a, a:visited {
 	  color: #19231a;
@@ -50,6 +59,7 @@ h1{
     padding: 5px 0px 5px 0px;
     background-color: #efe6dd;
     color: white;
+    margin-bottom:10px;
 }
 
 .logo img {
@@ -84,61 +94,97 @@ h1{
     text-decoration: none;
 }
 
-#banner {
-	background-image: url("../images/banner.png");
-	background-size: cover;
-	background-repeat: no-repeat;
-	/*background-attachment: fixed;*/
-	background-position: center;
-   	height: 300px;
-   	width: calc(100% - 20px);
-   	resize: both;
-   	margin: 10px;
-   	position: relative;
-   	border-radius: 12px;
+/* Stili per la griglia dei prodotti */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Spaziatura tra i prodotti */
+    margin: 20px 0px 20px 0px;
 }
 
-#banner-info{
-	width:150px;
-	height:100px;
-	background-color: #efe6dd;
-	position: absolute;
-	right: 30px;
-	top: 80px;
-	border-radius: 12px;
-	margin: 0 10px;
-    color: #19231a;
-    font-size: 22px;
-    text-decoration: none;
+
+
+.product-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 0 1 calc(25% - 16px); /* 4 prodotti per riga */
+    max-width: calc(25%); /* 4 prodotti per riga */
     text-align: center;
     padding: 10px;
-    padding-top:30px;
-    font-size: 30px;
-   
+    transition: transform 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-decoration: none;
 }
 
-#banner-info a{
-	font-family: "DIN";
-    font-size: 30px;
+
+
+.product-item:hover {
+    transform: scale(1.05);
 }
 
-#banner-button {
-    width: 150px;
-    height: 50px;
-    background-color: #3c7a89;
-    position: absolute;
-    bottom: 10px;
-    border-radius: 12px;
+.product-image {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:10px;
+    flex-grow: 1;
 }
 
-#banner-button a {
-    color: white;
+.product-image img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin:5px;
+    padding:0px;
+}
+
+.product-price {
+	color: #3c7a89;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-grid-catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 10px;
+    margin: 20px 0px 20px 0px;
+}
+
+.product-item-catalogo {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex: 0 1 calc(18% - 16px); 
+    max-width: 15%; 
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     text-decoration: none;
-    font-family: "Segoe";
-    font-size: 16px;
 }
-

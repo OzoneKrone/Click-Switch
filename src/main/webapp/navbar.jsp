@@ -12,6 +12,7 @@
 	<meta charset="UTF-8">
     <title>Click &amp; Switch Homepage</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    
 </head>
 <body>
 	<nav class="navbar">
