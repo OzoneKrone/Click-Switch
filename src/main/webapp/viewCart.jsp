@@ -36,19 +36,21 @@
     <meta charset="UTF-8">
     <title>Carrello</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/cart.css" type="text/css">
 </head>
 <body>
     <!-- Include della barra di navigazione -->
     <jsp:include page="navbar.jsp" />
 
     <h1>Carrello</h1>
-    <table border="1">
+    <table border="1" class="cart-table">
         <tr>
             <th>ID Prodotto</th>
             <th>Nome</th>
             <th>Quantità</th>
             <th>Prezzo Unitario</th>
             <th>Prezzo Totale</th>
+            <th>Azioni</th>
         </tr>
         <% if (cart != null) {
             for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
@@ -69,9 +71,21 @@
         <tr>
             <td><%= product.getId() %></td>
             <td><%= product.getName() %></td>
-            <td><%= quantity %></td>
+            <td>
+                <form action="updateCart.jsp" method="post">
+                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+                    <input type="number" name="quantity" value="<%= quantity %>" min="1">
+                    <input type="submit" value="Aggiorna">
+                </form>
+            </td>
             <td><%= product.getPrice() %></td>
             <td><%= totalPrice %></td>
+            <td>
+                <form action="removeFromCart.jsp" method="post">
+                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+                    <input type="submit" value="Rimuovi">
+                </form>
+            </td>
         </tr>
         <%          }
             }
@@ -82,6 +96,10 @@
 
     <form action="checkout.jsp" method="get">
         <input type="submit" value="Procedi al Pagamento">
+    </form>
+    
+    <form action="clearCart.jsp" method="post">
+        <input type="submit" value="Svuota Carrello">
     </form>
 </body>
 </html>

@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+h2{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.cart-table{
+	margin-top: 20px;
+	caption-side: bottom; 
+}
