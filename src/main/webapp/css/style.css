@@ -89,7 +89,7 @@ h1{
 
 .actions a {
     margin-left: 20px;
-    
+    padding-right: 15px;
     color: #19231a;
     text-decoration: none;
 }
@@ -258,4 +258,135 @@ h1{
 
 .product-details-add-to-cart-button:hover {
 	background-color: #2f5f6b;
+}
+
+#menu-user {
+  position: relative; /* Aggiungi questa riga */
+}
+
+#dropdown-user {
+	background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: none;
+	position:absolute;
+ 	z-index:1000;
+	margin: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#dropdown-user ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+#dropdown-user li{
+  	margin: 0;
+ 	padding: 0;
+  	text-align: left;
+}
+
+#dropdown-user li a {
+	margin: 0;
+  	padding: 5px 10px 5px 10px;
+  	display: block;
+}
+
+#dropdown-user li:hover {
+  background-color: #3c7a89;
+}
+
+#dropdown-user li:hover a {
+  color: #ffffff;	
+}
+#menu-user:hover #dropdown-user {
+  	display: block;
+}
+
+.admin-product-list{
+	margin-top:20px;
+}
+
+.admin-product-list table{
+	width: 100%;
+	border-collapse: collapse;
+	tr:nth-child(even) {background-color: #e3d5c8;}
+	tr:hover {background-color: coral;}
+}
+
+.admin-product-list th{
+	height: 20px;
+	padding:5px
+}
+
+.admin-product-list td{
+	font-size:12px;
+	padding: 2px;
+}
+
+.admin-user-list{
+	margin-top:20px;
+}
+
+.admin-user-list table{
+	width: 100%;
+	border-collapse: collapse;
+	tr:nth-child(even) {background-color: #e3d5c8;}
+	tr:hover {background-color: coral;}
+
+}
+
+.admin-user-list th{
+	height: 20px;
+	padding:5px
+}
+
+.admin-user-list td{
+	font-size:12px;
+	padding: 2px;
+}
+
+.order-list{
+	margin-top:20px;
+}
+
+.order-list table{
+	width: 100%;
+	border-collapse: collapse;
+		tr:nth-child(even) {background-color: #e3d5c8;}
+	tr:hover {background-color: coral;}
+
+}
+
+.order-list th{
+	height: 20px;
+	padding:5px
+}
+
+.order-list td{
+	font-size:12px;
+	padding: 2px;
+}
+
+.order-details{
+	margin-top:20px;
+}
+
+.order-details table{
+	width: 30%;
+	border-collapse: collapse;
+}
+
+.order-details th{
+	height: 20px;
+	padding:5px
+}
+
+.order-details td{
+	font-size:12px;
+	padding: 2px;
 }

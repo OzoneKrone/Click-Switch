@@ -34,6 +34,7 @@
     <jsp:include page="navbar.jsp" />
 	
     <h1>Lista Ordini</h1>
+    <div class="order-list">
     <table border="1">
         <tr>
             <th>ID</th>
@@ -59,5 +60,6 @@
             </tr>
         <% } %>
     </table>
+    </div>
 </body>
 </html>

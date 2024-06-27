@@ -31,20 +31,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Lista Prodotti</title>
+    <title>Dettagli Ordine</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
     <jsp:include page="navbar.jsp" />
     <h1>Dettagli ordine #<%= order.getId() %></h1>
-    <table border="1">    
-    <tr><th>Utente</th><th><%= order.getUsername() %></th></tr>
-    <tr><th>ID Ordine</th><th><%= order.getId() %></th></tr>
-    <tr><th>Data e ora</th><th><%= order.getDateTime() %></th></tr>
-    <tr><th>Stato</th><th><%= order.getStatus() %></th></tr>
-    <tr><th>Totale</th><th><%= order.getTotal() %></th></tr>
-    </table>
-    
+    <div class="order-details">
+	    <table border="1">    
+	    <tr><th>Utente</th><th><%= order.getUsername() %></th></tr>
+	    <tr><th>ID Ordine</th><th><%= order.getId() %></th></tr>
+	    <tr><th>Data e ora</th><th><%= order.getDateTime() %></th></tr>
+	    <tr><th>Stato</th><th><%= order.getStatus() %></th></tr>
+	    <tr><th>Totale</th><th><%= order.getTotal() %></th></tr>
+	    </table>
+    </div>
 </body>
 </html>

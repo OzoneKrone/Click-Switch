@@ -38,6 +38,7 @@
             if (count >= 8) {
                 break; // Interrompi il ciclo se sono stati visualizzati 6 prodotti
             }
+            if (product.getIsAvailable()){
             count++; // Incrementa il contatore
     %>
             <a class="product-item" href="ProductServlet?id=<%= product.getId() %>">
@@ -51,7 +52,9 @@
                     <%= product.getPrice() %> €
                 </div>
             </a>
-    <% }
+            
+    <% 		}
+       }
     } else { %>
         <p>Non ci sono prodotti disponibili al momento.</p>
     <% } %>

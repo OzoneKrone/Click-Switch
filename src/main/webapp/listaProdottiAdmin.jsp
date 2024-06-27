@@ -27,36 +27,38 @@
     <jsp:include page="navbar.jsp" />
 	
     <h1>Lista Prodotti</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>Quantità</th>
-            <th>Disponibile</th>
-            <th>Immagine</th>
-        </tr>
-        <% for (ProductBean product : products) { %>
-            <tr>
-                <td><%= product.getId() %></td>
-                <td><%= product.getName() %></td>
-                <td><%= product.getDescription() %></td>
-                <td><%= product.getPrice() %></td>
-                <td><%= product.getQuantity() %></td>
-                <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
-                <td><img src=<%= product.getImageUrl() %> alt="Missing Image" width="300" ></td>
-                <td>
-                	<%if (product.getIsAvailable()) {%>
-                	<a href="editProduct.jsp?productId=<%=product.getId()%>"><button>Modifica</button></a>
-                    <form action="DeleteProduct" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
-                        <input type="hidden" name="productId" value="<%= product.getId() %>">
-                        <button type="submit">Elimina</button>
-                    </form>
-                    <%}%>
-                </td>
-            </tr>
-        <% } %>
-    </table>
+    <div class="admin-product-list">
+	    <table border="1">
+	        <tr>
+	            <th>ID</th>
+	            <th>Nome</th>
+	            <th>Descrizione</th>
+	            <th>Prezzo</th>
+	            <th>Quantità</th>
+	            <th>Disponibile</th>
+	            <th>Immagine</th>
+	        </tr>
+	        <% for (ProductBean product : products) { %>
+	            <tr>
+	                <td><%= product.getId() %></td>
+	                <td><%= product.getName() %></td>
+	                <td><%= product.getDescription() %></td>
+	                <td><%= product.getPrice() %></td>
+	                <td><%= product.getQuantity() %></td>
+	                <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
+	                <td><img src=<%= product.getImageUrl() %> alt="Missing Image" width="50" ></td>
+	                <td>
+	                	<%if (product.getIsAvailable()) {%>
+	                	<a href="editProduct.jsp?productId=<%=product.getId()%>"><button>Modifica</button></a>
+	                    <form action="DeleteProduct" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
+	                        <input type="hidden" name="productId" value="<%= product.getId() %>">
+	                        <button type="submit">Elimina</button>
+	                    </form>
+	                    <%}%>
+	                </td>
+	            </tr>
+	        <% } %>
+	    </table>
+    </div>
 </body>
 </html>

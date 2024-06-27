@@ -11,8 +11,6 @@
 	<title>Navbar</title>
 	<meta charset="UTF-8">
     <title>Click &amp; Switch Homepage</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    
 </head>
 <body>
 	<nav class="navbar">
@@ -23,13 +21,25 @@
         <a href="index.jsp">Home</a>
         <a href="listaProdotti.jsp">Prodotti</a>
     </div>
-    <div class="actions">
-        <% if (currentUser == null) { %>
-        <a href="login.jsp">Login</a>
-        <% } else {%>
+    <div class="actions">   
         <a href="viewCart.jsp"><img src="images/cart_icon.png" alt="Cart" width="24" height="24"></a>
-        <a href="Logout">Logout</a>
-        <% }%>
+        <div id="menu-user">
+        	<img src="images/menu_icon.png" alt="Menu" width="24" height="24">
+	        <div id="dropdown-user">
+	        <ul>
+	        	<% if (currentUser == null) { %>
+		        <li><a href="login.jsp">Login</a><li>
+		        <% } else {%>
+		        <li><a href="Logout">Logout</a></li>
+		        <li><a href="listaOrdini.jsp">Ordini</a></li>
+		        <% if (currentUser.getRole().equals("admin")) { %>
+		        	<li><a href="listaProdottiAdmin.jsp">Modifica catalogo</a></li>
+		        	<li><a href="listaUtenti.jsp">Visualizza Utenti</a></li>
+		        	<li><a href="addProduct.jsp">Aggiungi prodotto</a></li>		        	
+		        <% }	} %>
+		    </ul>
+	        </div>
+	    </div>
     </div>
 	</nav>
 </body>
