@@ -29,6 +29,7 @@
 	        <ul>
 	        	<% if (currentUser == null) { %>
 		        <li><a href="login.jsp">Login</a><li>
+		        <li><a href="register.jsp">Registrati</a><li>		        
 		        <% } else {%>
 		        <li><a href="Logout">Logout</a></li>
 		        <li><a href="listaOrdini.jsp">Ordini</a></li>

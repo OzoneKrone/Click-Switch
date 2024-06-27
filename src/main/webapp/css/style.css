@@ -32,7 +32,7 @@ body{
 	
 	padding:10px;
 	
-	margin: 0px 10% 0px 10%;
+	margin: 0px 100px 0px 100px;
 	
 	a, a:visited {
 	  color: #19231a;
@@ -65,7 +65,7 @@ h1{
 }
 
 .logo img {
-    height: 40px; /* Adjust the height of your logo */
+    height: 40px;
     margin-left: 40px;
 }
 
@@ -296,6 +296,7 @@ h1{
 	margin: 0;
   	padding: 5px 10px 5px 10px;
   	display: block;
+  	font-size: 14px;
 }
 
 #dropdown-user li:hover {
@@ -391,4 +392,170 @@ h1{
 .order-details td{
 	font-size:12px;
 	padding: 2px;
+}
+
+#banner {
+	background-size: cover;
+	background-repeat: no-repeat;
+	/*background-attachment: fixed;*/
+	background-position: center;
+   	height: 300px;
+   	width: 100%;
+   	resize: both;
+   	/*margin: 10px;*/
+   	position: relative;
+   	border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#banner-info{
+	width:150px;
+	height:120px;
+	background-color: #efe6dd;
+	position: absolute;
+	right: 30px;
+	top: 80px;
+	border-radius: 12px;
+	margin: 0 10px;
+    color: #19231a;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    padding-top: 25px;   
+}
+
+#banner-button {
+    width: 130px;
+    height: 50px;
+    background-color: #3c7a89;
+    position: absolute;
+    bottom: 10px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+    color: white;
+    text-decoration: none;
+    font-family: "Segoe";
+    font-size: 16px;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 1200px){
+	body{
+	padding:10px;
+	margin: 0px 50px 0px 50px;
+	}
+	
+	.navbar {
+    padding: 5px 0px 5px 0px;
+    margin-bottom:0px;
+	}
+	
+	.logo img {
+    height: 35px;
+    margin-left: 30px;
+	}
+	
+	.product-grid-catalogo {
+    row-gap: 10px;
+    margin: 10px;
+	}
+}
+@media screen and (max-width: 980px){
+	.product-grid-catalogo {
+    row-gap: 10px;
+    margin: 0px;
+	}
+
+	.product-item-catalogo {
+    flex: 0 1 calc(25% - 10px); 
+    max-width: 25%; 
+    
+    padding: 10px;
+    transition: transform 0.2s;
+	}
+}
+@media screen and (max-width: 750px){
+	body{
+	padding:5px;
+	margin: 0px 25px 0px 25px;
+	}
+	
+	.navbar {
+    padding: 5px 0px 5px 0px;
+    margin-bottom:0px;
+	}
+	
+	.logo img {
+    height: 30px;
+    margin-left: 25px;
+	}
+	
+    .actions {
+    font-size: 14px;
+	}
+	
+	.product-item {
+    flex: 0 1 calc(50% - 10px); /* 4 prodotti per riga */
+    max-width: calc(50%); /* 4 prodotti per riga */
+	}
+	
+	.product-grid {
+    gap: 10px; /* Spaziatura tra i prodotti */
+    margin: 20px 0px 20px 0px;
+	}
+	
+	#banner {
+   	height: 300px;
+   	width: 100%;
+   	resize: both;
+   	/*margin: 10px;*/
+   	border-radius: 12px
+}
+
+	#banner-info{
+	width:120px;
+	height:100px;
+	right: 30px;
+	top: 80px;
+	margin: 0 10px;
+    font-size: 14px;
+    padding: 10px;
+    padding-top: 20px;   
+	}
+
+	#banner-button {
+    width: 100px;
+    height: 40px;
+    bottom: 10px;
+    margin-top:10px;
+    font-size: 16px;
+    font-weight: normal;
+	}
+	
+}
+
+@media screen and (max-width: 540px){
+	body{
+	padding:5px;
+	margin: 0px 5px 0px 5px;
+	}
+	
+	.product-grid-catalogo {
+    row-gap: 10px;
+    margin: 0px;
+	}
+
+	.product-item-catalogo {
+    flex: 0 1 calc(50% - 10px); 
+    max-width: 50%; 
+    
+    padding: 10px;
+    transition: transform 0.2s;
+	}
 }

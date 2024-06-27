@@ -23,6 +23,7 @@
     <meta charset="UTF-8">
     <title>Click &amp; Switch Homepage</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
