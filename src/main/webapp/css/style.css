@@ -50,6 +50,8 @@ h1{
 	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
 	-moz-osx-font-smoothing: grayscale;   /* For macOS */
 	font-smooth: always;                  /* General */
+	
+	margin-bottom:25px;
 }
 
 .navbar {

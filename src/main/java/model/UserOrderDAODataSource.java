@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collection;
-import java.util.LinkedList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -18,6 +16,10 @@ import model.UserBean;
 import model.UserBeanDAO;
 import model.UserOrderBean;
 import model.UserOrderDAO;
+
+import java.sql.*;
+import java.util.*;
+import java.util.Date;
 
 public class UserOrderDAODataSource implements UserOrderDAO<UserOrderBean>{
 	private static DataSource ds;
@@ -220,4 +222,101 @@ public class UserOrderDAODataSource implements UserOrderDAO<UserOrderBean>{
 		}
 		return Orders;
 	}
+	
+	public Collection<UserOrderBean> doRetrieveByDateRange(Date startDate, Date endDate) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String selectSQL = "SELECT * FROM " + UserOrderDAODataSource.TABLE_NAME + " WHERE 1=1";
+        if (startDate != null) {
+            selectSQL += " AND date_time >= ?";
+        }
+        if (endDate != null) {
+            selectSQL += " AND date_time <= ?";
+        }
+
+        List<UserOrderBean> orders = new ArrayList<>();
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+
+            int paramIndex = 1;
+            if (startDate != null) {
+                preparedStatement.setDate(paramIndex++, new java.sql.Date(startDate.getTime()));
+            }
+            if (endDate != null) {
+                preparedStatement.setDate(paramIndex++, new java.sql.Date(endDate.getTime()));
+            }
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                UserOrderBean bean = new UserOrderBean();
+                // Popola il bean con i dati del ResultSet
+                bean.setId(rs.getInt("id"));
+                bean.setUsername(rs.getString("username"));
+                bean.setDateTime(rs.getTimestamp("date_time"));
+                bean.setStatus(rs.getString("status"));
+                bean.setTotal(rs.getDouble("total"));
+                orders.add(bean);
+            }
+
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return orders;
+    }
+
+    public Collection<UserOrderBean> doRetrieveByUsernameAndDateRange(String username, Date startDate, Date endDate) throws SQLException {
+    	if(username == null || username == "") {
+    		return this.doRetrieveByDateRange(startDate, endDate);
+    	}
+    	
+    	Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        String selectSQL = "SELECT * FROM " + UserOrderDAODataSource.TABLE_NAME + " WHERE username = ?";
+        if (startDate != null) {
+            selectSQL += " AND date_time >= ?";
+        }
+        if (endDate != null) {
+            selectSQL += " AND date_time <= ?";
+        }
+
+        List<UserOrderBean> orders = new ArrayList<>();
+
+        try {
+            connection = ds. getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, username);
+
+            int paramIndex = 2;
+            if (startDate != null) {
+                preparedStatement.setDate(paramIndex++, new java.sql.Date(startDate.getTime()));
+            }
+            if (endDate != null) {
+                preparedStatement.setDate(paramIndex++, new java.sql.Date(endDate.getTime()));
+            }
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                UserOrderBean bean = new UserOrderBean();
+                // Popola il bean con i dati del ResultSet
+                bean.setId(rs.getInt("id"));
+                bean.setUsername(rs.getString("username"));
+                bean.setDateTime(rs.getTimestamp("date_time"));
+                bean.setStatus(rs.getString("status"));
+                bean.setTotal(rs.getDouble("total"));
+                orders.add(bean);
+            }
+
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
+        return orders;
+    }
 }

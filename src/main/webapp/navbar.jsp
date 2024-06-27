@@ -34,6 +34,7 @@
 		        <li><a href="listaOrdini.jsp">Ordini</a></li>
 		        <% if (currentUser.getRole().equals("admin")) { %>
 		        	<li><a href="listaProdottiAdmin.jsp">Modifica catalogo</a></li>
+		        	<li><a href="listaOrdiniAdmin.jsp">Visualizza Ordini</a></li>
 		        	<li><a href="listaUtenti.jsp">Visualizza Utenti</a></li>
 		        	<li><a href="addProduct.jsp">Aggiungi prodotto</a></li>		        	
 		        <% }	} %>

@@ -54,7 +54,7 @@ INSERT INTO product (name, price, description, quantity, is_available, image_url
 VALUES 
     ('Qisan 68', 59.99, 'Design mini e portatile, tastiera a due tasti con tasti meccanici OUTEMU (equivalente al modello Cherry MX)', 50, true, 'images/qisan.jpg'),
     ('Razer BlackWidow', 129.99, 'Tastiera meccanica da gaming con Razer Chroma™ RGB', 100, true, 'images/blackwidow.jpg'),
-    ('Logitech G412', 79.99, 'G413 TKL SE include switch meccanici Tactile, rollover a 6 tasti anti-ghosting, copritasti in PBT e scocca robusta in lega di alluminio senza tastierino numerico.', 30, false, 'images/g412.jpg'),
+    ('Logitech G412', 79.99, 'G413 TKL SE include switch meccanici Tactile, rollover a 6 tasti anti-ghosting, copritasti in PBT e scocca robusta in lega di alluminio senza tastierino numerico.', 30, true, 'images/g412.jpg'),
     ('Keychron Q1', 229.99, 'Tastiera Meccanica Premium con RBG e Hot-Swappable Sockets', 100, true, 'images/q1.jpg'),
     ('Akko 3502', 200.99, 'Gaming mouse with adjustable DPI', 100, true, 'images/akko.jpg'),
     ('Cherry Red Switches', 29.99, '5-Pin Keyboard switches (Pack of 25)', 100, true, 'images/red.jpg'),
