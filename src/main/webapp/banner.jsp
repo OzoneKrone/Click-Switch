@@ -34,7 +34,7 @@
     <div id="banner" style="background-image: url('<%= product.getImageUrl() %>');">
         <div id="banner-info">
             <div><%= product.getName() %></div>    
-            	<a id="banner-button" href="listaProdotti.jsp">
+            	<a id="banner-button" href="ProductServlet?id=<%= product.getId() %>">
                 Dettagli >
             </a>        
         </div>

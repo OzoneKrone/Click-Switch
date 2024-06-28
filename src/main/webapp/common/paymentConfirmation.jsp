@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Include della barra di navigazione -->
-    <jsp:include page="navbar.jsp" />
+    <jsp:include page="../navbar.jsp" />
 
     <h1>Pagamento Confermato</h1>
     <p>Grazie per il tuo acquisto! Il tuo pagamento è stato elaborato con successo.</p>

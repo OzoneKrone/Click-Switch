@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Include della barra di navigazione -->
-    <jsp:include page="navbar.jsp" />
+    <jsp:include page="../navbar.jsp" />
 
     <h1>Pagamento</h1>
     <form action="ProcessPaymentServlet" method="post">

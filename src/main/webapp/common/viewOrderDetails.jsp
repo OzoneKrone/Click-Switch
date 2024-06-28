@@ -36,7 +36,7 @@
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
-    <jsp:include page="navbar.jsp" />
+    <jsp:include page="../navbar.jsp" />
     <h1>Dettagli ordine #<%= order.getId() %></h1>
     <div class="order-details">
 	    <table border="1">    

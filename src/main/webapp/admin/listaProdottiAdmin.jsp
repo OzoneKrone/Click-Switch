@@ -20,11 +20,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Prodotti</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
-    <jsp:include page="navbar.jsp" />
+    <jsp:include page="../navbar.jsp" />
 	
     <h1>Lista Prodotti</h1>
     <div class="admin-product-list">
@@ -46,7 +46,7 @@
 	                <td><%= product.getPrice() %></td>
 	                <td><%= product.getQuantity() %></td>
 	                <td><%= product.getIsAvailable() ? "yes" : "no" %></td>
-	                <td><img src=<%= product.getImageUrl() %> alt="Missing Image" width="50" ></td>
+	                <td><img src="${pageContext.request.contextPath}/<%= product.getImageUrl() %>" alt="Missing Image" width="50"></td>
 	                <td>
 	                	<%if (product.getIsAvailable()) {%>
 	                	<a href="editProduct.jsp?productId=<%=product.getId()%>"><button>Modifica</button></a>

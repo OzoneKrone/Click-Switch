@@ -20,10 +20,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Utenti</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>    
-	<jsp:include page="navbar.jsp" />
+	<jsp:include page="../navbar.jsp" />
     <h1>Lista Utenti</h1>
     <div class="admin-user-list">
 	    <table border="1">

@@ -12,7 +12,6 @@
     Collection<UserOrderBean> orders = null;
     UserBean currentUser = (UserBean) session.getAttribute("currentUser");
 
-    String username = request.getParameter("username");
     String startDateStr = request.getParameter("startDate");
     String endDateStr = request.getParameter("endDate");
 
@@ -33,7 +32,11 @@
 
     try {
         UserOrderDAODataSource orderDAO = new UserOrderDAODataSource();
-        orders = orderDAO.doRetrieveByUsernameAndDateRange(username, startDate, endDate);
+        if (startDate == null && endDate == null) {
+        	orders = orderDAO.doRetrieveByUsernameAndDateRange(currentUser.getUsername(), null, null);         
+        } else {
+        	orders = orderDAO.doRetrieveByUsernameAndDateRange(currentUser.getUsername(), startDate, endDate);
+        }
     } catch (SQLException e) {
         e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
     }
@@ -43,30 +46,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Lista Ordini Admin</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Lista Ordini</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
     <!-- Include della barra di navigazione -->
-    <jsp:include page="navbar.jsp" />
+    <jsp:include page="../navbar.jsp" />
     
-    <h1>Lista Ordini Admin</h1>
+    <h1>Lista Ordini</h1>
 
     <!-- Modulo per selezionare l'intervallo di date -->
-    <div>
-        <form method="get" action="listaOrdiniAdmin.jsp">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="<%= username %>">
-            
-            <label for="startDate">Data inizio:</label>
-            <input type="date" id="startDate" name="startDate" value="<%= startDateStr %>">
-            
-            <label for="endDate">Data fine:</label>
-            <input type="date" id="endDate" name="endDate" value="<%= endDateStr %>">
-            
-            <button type="submit">Filtra</button>
-        </form>
-    </div>
+    <div><form method="get" action="listaOrdiniAdmin.jsp">
+        <label for="startDate">Data inizio:</label>
+        <input type="date" id="startDate" name="startDate" value="<%= startDateStr %>">
+        
+        <label for="endDate">Data fine:</label>
+        <input type="date" id="endDate" name="endDate" value="<%= endDateStr %>">
+        
+        <button type="submit">Filtra</button>
+    </form></div>
 
     <div class="order-list">
     <table border="1">

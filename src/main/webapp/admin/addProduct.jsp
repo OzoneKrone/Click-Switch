@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Aggiunta Prodotto</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
     <h1>Aggiunta nuovo prodotto</h1>
