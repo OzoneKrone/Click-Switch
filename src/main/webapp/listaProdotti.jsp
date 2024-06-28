@@ -32,7 +32,7 @@
     <% if (products != null && !products.isEmpty()) {
         int count = 0; // Contatore per il numero di prodotti visualizzati
         for (ProductBean product : products) { 
-            if (count >= 8) {
+            if (count >= 24) {
                 break; // Interrompi il ciclo se sono stati visualizzati 6 prodotti
             }
             if (product.getIsAvailable()){

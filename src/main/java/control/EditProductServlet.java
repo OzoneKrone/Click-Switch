@@ -96,7 +96,7 @@ public class EditProductServlet extends HttpServlet {
 		
 		try {
             productDAO.doUpdate(product);
-            response.sendRedirect("listaProdottiAdmin.jsp"); // Reindirizza alla pagina di login dopo la registrazione
+            response.sendRedirect("admin/listaProdottiAdmin.jsp"); // Reindirizza alla pagina di login dopo la registrazione
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Errore durante la registrazione. Riprova.");

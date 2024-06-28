@@ -47,7 +47,7 @@ public class DeleteProductServlet extends HttpServlet {
 
         try {
             productDAO.setProductAvailability(productId, false);
-            response.sendRedirect("listaProdottiAdmin.jsp");
+            response.sendRedirect("admin/listaProdottiAdmin.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Errore durante l'eliminazione del prodotto.");

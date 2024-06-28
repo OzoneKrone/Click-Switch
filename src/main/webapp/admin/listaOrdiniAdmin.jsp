@@ -87,7 +87,7 @@
                     <td><%= order.getStatus() %></td>
                     <td><%= order.getTotal() %></td>
                     <td>
-                        <form action="viewOrderDetails.jsp" method="post">
+                        <form action="${pageContext.request.contextPath}/common/viewOrderDetails.jsp" method="post">
                             <input type="hidden" name="orderId" value="<%= order.getId() %>">
                             <button type="submit">Dettagli</button>
                         </form>

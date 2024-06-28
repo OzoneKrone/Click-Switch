@@ -11,7 +11,7 @@
 	Collection<ProductBean> products = null;
 	try {
 	    ProductDAODataSource productDAO = new ProductDAODataSource();
-	    products = productDAO.doRetrieveAll(null); // null indica nessun ordinamento
+	    products = productDAO.doRetrieveAll("ID DESC"); // null indica nessun ordinamento
 	} catch (SQLException e) {
 	    e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
 	}

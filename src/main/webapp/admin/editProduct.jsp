@@ -26,14 +26,14 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Modifica Prodotto</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
     <jsp:include page="../navbar.jsp" />
 	
 	<h1>Modifica prodotto</h1>
-    <form action="EditProduct" method="post" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/EditProduct" method="post" enctype="multipart/form-data">
     	<input type="hidden" id="id" name="id" value="<%=product.getId() %>">
     	
         <label for="name">Name:</label>

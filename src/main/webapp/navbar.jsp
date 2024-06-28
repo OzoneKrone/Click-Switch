@@ -22,7 +22,9 @@
         <a href="${pageContext.request.contextPath}/listaProdotti.jsp">Prodotti</a>
     </div>
     <div class="actions">   
-        <a href="viewCart.jsp"><img src="${pageContext.request.contextPath}/images/cart_icon.png" alt="Cart" width="24" height="24"></a>
+        <a href="${pageContext.request.contextPath}/viewCart.jsp">
+        	<img src="${pageContext.request.contextPath}/images/cart_icon.png" alt="Cart" width="24" height="24">
+        </a>
         <div id="menu-user">
         	<img src="${pageContext.request.contextPath}/images/menu_icon.png" alt="Menu" width="24" height="24">
 	        <div id="dropdown-user">

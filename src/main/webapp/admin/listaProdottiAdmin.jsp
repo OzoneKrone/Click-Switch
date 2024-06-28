@@ -49,8 +49,8 @@
 	                <td><img src="${pageContext.request.contextPath}/<%= product.getImageUrl() %>" alt="Missing Image" width="50"></td>
 	                <td>
 	                	<%if (product.getIsAvailable()) {%>
-	                	<a href="editProduct.jsp?productId=<%=product.getId()%>"><button>Modifica</button></a>
-	                    <form action="DeleteProduct" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
+	                	<a href="${pageContext.request.contextPath}/admin/editProduct.jsp?productId=<%=product.getId()%>"><button>Modifica</button></a>
+	                    <form action="${pageContext.request.contextPath}/DeleteProduct" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
 	                        <input type="hidden" name="productId" value="<%= product.getId() %>">
 	                        <button type="submit">Elimina</button>
 	                    </form>

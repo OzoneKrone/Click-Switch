@@ -19,7 +19,7 @@ import model.ProductDAODataSource;
 /**
  * Servlet implementation class AddProductServlet
  */
-@WebServlet("/AddProduct")
+@WebServlet("/admin/AddProduct")
 @MultipartConfig(
 	    fileSizeThreshold = 1024 * 1024 * 1,  // 1 MB
 	    maxFileSize = 1024 * 1024 * 10,       // 10 MB
@@ -51,7 +51,7 @@ public class AddProductServlet extends HttpServlet {
 	            name.trim().isEmpty() || description.trim().isEmpty() || filePart == null
 	            || filePart.getSize() == 0) {
 	            request.setAttribute("error", "Tutti i campi obbligatori devono essere compilati");
-	            RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("addProduct.jsp");
 	            dispatcher.forward(request, response);
 	            return;
 	        }

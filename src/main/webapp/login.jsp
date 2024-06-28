@@ -6,6 +6,8 @@
 <head>
 	<meta http-quiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Pagina di Login</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
 </head>
 
 <body>
@@ -18,9 +20,9 @@ if(errors != null){
 	}
 }
 %>
+<h1>Login</h1>
 <form action="Login" method="post">
 <fieldset>
-	<legend>Login Custom</legend>
 	<label for="username">Username</label>
 	<input id="username" type="text" name="username" placeholder="Username">
 	<br>
@@ -39,5 +41,7 @@ if(errors != null){
     <%
         }
     %>
+    
+<div><a href="index.jsp">Ritorna alla Home</a></div>
 </body>
 </html>
