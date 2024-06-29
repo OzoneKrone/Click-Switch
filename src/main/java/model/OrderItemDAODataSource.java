@@ -2,15 +2,17 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import model.OrderItemBean;
 
-public class OrderItemDAODataSource {
+public class OrderItemDAODataSource  implements OrderItemDAO<OrderItemBean>{
 	private static DataSource ds;
 	
 	static {
@@ -25,7 +27,8 @@ public class OrderItemDAODataSource {
 	}
 	
 	private static final String TABLE_NAME = "clickswitch.order_items";
-
+	
+	@Override
     public synchronized void doSave(OrderItemBean orderItem) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -52,6 +55,38 @@ public class OrderItemDAODataSource {
             }
         }
     }
-
-    // Altri metodi di accesso ai dati, se necessari, come doRetrieveByOrderId
+    
+    @Override
+	public Collection<OrderItemBean> doRetrieveOrderItems(int orderId) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Collection<OrderItemBean> items = new LinkedList<OrderItemBean>();
+		
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE order_id = ?";
+		try {
+	        connection = ds.getConnection();    
+	        preparedStatement = connection.prepareStatement(selectSQL);
+	        preparedStatement.setInt(1, orderId);
+	        ResultSet rs = preparedStatement.executeQuery();
+	        while (rs.next()) {
+	            OrderItemBean bean = new OrderItemBean(); // Creazione di un nuovo bean in ogni iterazione
+	            bean.setProductId(rs.getInt("PRODUCT_ID"));
+	            bean.setOrderId(rs.getInt("ORDER_ID"));
+	            bean.setName(rs.getString("NAME"));
+	            bean.setPrice(rs.getFloat("PRICE"));
+	            bean.setQuantity(rs.getInt("QUANTITY"));
+	            items.add(bean);
+	        }
+	    } finally {
+	        try {
+	            if (preparedStatement != null)
+	                preparedStatement.close();
+	        } finally {
+	            if (connection != null)
+	                connection.close();
+	        }
+	    }
+	    return items;
+	}
 }

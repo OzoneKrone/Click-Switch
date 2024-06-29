@@ -5,6 +5,8 @@
 <%@ page import="model.UserOrderDAODataSource"%>
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="model.UserBean" %>
+<%@ page import="model.OrderItemBean" %>
+<%@ page import="model.OrderItemDAODataSource" %>
     
 <%
     // Ottieni l'ordine dal database
@@ -24,8 +26,16 @@
     } catch (SQLException e) {
         e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
     }
+    
+ 	// Ottieni i prodotti dell'ordine dal database
+    Collection<OrderItemBean> items = null;
+    try {
+        OrderItemDAODataSource orderItemDAO = new OrderItemDAODataSource();
+        items = orderItemDAO.doRetrieveOrderItems(orderId);
+    } catch (SQLException e) {
+        e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
+    }
 %>
-
 
 <!DOCTYPE html>
 <html>
@@ -33,19 +43,50 @@
     <meta charset="UTF-8">
     <title>Dettagli Ordine</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/orderDetails.css" type="text/css">
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
     <jsp:include page="../navbar.jsp" />
+    
     <h1>Dettagli ordine #<%= order.getId() %></h1>
-    <div class="order-details">
-	    <table border="1">    
-	    <tr><th>Utente</th><th><%= order.getUsername() %></th></tr>
-	    <tr><th>ID Ordine</th><th><%= order.getId() %></th></tr>
-	    <tr><th>Data e ora</th><th><%= order.getDateTime() %></th></tr>
-	    <tr><th>Stato</th><th><%= order.getStatus() %></th></tr>
-	    <tr><th>Totale</th><th><%= order.getTotal() %></th></tr>
-	    </table>
+        
+    <div class="order-items-table">
+	    <table>
+            <tr>
+                <th>Nome Prodotto</th>
+                <th>Quantità</th>
+                <th>Prezzo</th>
+            </tr>
+            <%
+                if (items != null) {
+                    for (OrderItemBean item : items) {
+            %>
+            <tr>
+                <td><%= item.getName() %></td>
+                <td><%= item.getQuantity() %></td>
+                <td><%= item.getPrice() %></td>
+            </tr>
+            <%
+                    }
+                } else {
+            %>
+            <tr>
+                <td colspan="3">Nessun prodotto trovato per questo ordine.</td>
+            </tr>
+            <%
+                }
+            %>
+       	</table>
+	    <div class="order-details">
+			<table>
+	        <tr><th>Utente</th><td><%= order.getUsername() %></td></tr>
+	        <tr><th>ID Ordine</th><td><%= order.getId() %></td></tr>
+	        <tr><th>Data e ora</th><td><%= order.getDateTime() %></td></tr>
+	        <tr><th>Stato</th><td><%= order.getStatus() %></td></tr>
+	        <tr><th>Totale</th><td><%= order.getTotal() %></td></tr>
+	    	</table>
+	    </div>
     </div>
 </body>
 </html>

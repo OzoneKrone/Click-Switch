@@ -7,4 +7,45 @@ h2{
 .cart-table{
 	margin-top: 20px;
 	caption-side: bottom; 
+	text-align:center;
+	width: 100%;
+	resize: both;
+	position: relative;
+}
+
+.cart-table table{
+	border-collapse: collapse;
+	width:70%;
+	tr:nth-child(even) {background-color: #e3d5c8;}
+	tr:hover {background-color: coral;}
+}
+
+.cart-table-total{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width:30%;
+}
+
+.cart-table-total input{
+	max-width:100%;
+	margin:5px;
+}
+
+.cart-table th{
+	height: 20px;
+	padding:5px
+}
+
+.cart-table td{
+	font-size:12px;
+	padding: 4px 0px 4px 0px;
+}
+
+.cart-quantity{
+	text-align:center;
+}
+
+.cart-quantity-input{
+	width: 50px;
 }

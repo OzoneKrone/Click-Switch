@@ -19,7 +19,7 @@ import model.UserOrderDAODataSource;
 import model.OrderItemBean;
 import model.OrderItemDAODataSource;
 
-@WebServlet("/ProcessPaymentServlet")
+@WebServlet("/common/ProcessPaymentServlet")
 public class ProcessPaymentServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

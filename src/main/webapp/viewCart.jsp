@@ -43,63 +43,66 @@
     <jsp:include page="navbar.jsp" />
 
     <h1>Carrello</h1>
-    <table border="1" class="cart-table">
-        <tr>
-            <th>ID Prodotto</th>
-            <th>Nome</th>
-            <th>Quantità</th>
-            <th>Prezzo Unitario</th>
-            <th>Prezzo Totale</th>
-            <th>Azioni</th>
-        </tr>
-        <% if (cart != null) {
-            for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
-                int productId = entry.getKey();
-                int quantity = entry.getValue();
-                
-                ProductBean product = null;
-                try {
-                    product = productDAO.doRetrieveByKey(productId);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                
-                if (product != null) {
-                    double totalPrice = product.getPrice() * quantity;
-                    total += totalPrice;
-        %>
-        <tr>
-            <td><%= product.getId() %></td>
-            <td><%= product.getName() %></td>
-            <td>
-                <form action="updateCart.jsp" method="post">
-                    <input type="hidden" name="productId" value="<%= product.getId() %>">
-                    <input type="number" name="quantity" value="<%= quantity %>" min="1">
-                    <input type="submit" value="Aggiorna">
-                </form>
-            </td>
-            <td><%= product.getPrice() %></td>
-            <td><%= totalPrice %></td>
-            <td>
-                <form action="removeFromCart.jsp" method="post">
-                    <input type="hidden" name="productId" value="<%= product.getId() %>">
-                    <input type="submit" value="Rimuovi">
-                </form>
-            </td>
-        </tr>
-        <%          }
-            }
-        } %>
-    </table>
-
-    <h2>Totale: <%= total %></h2>
-
-    <form action="checkout.jsp" method="get">
-        <input type="submit" value="Procedi al Pagamento">
-    </form>
-    
-    <form action="clearCart.jsp" method="post">
-        <input type="submit" value="Svuota Carrello">
-    </form>
+    <div class="cart-table">
+	    <table>
+	        <tr>
+	            <th>Nome</th>
+	            <th width="20%">Quantità</th>
+	            <th>Prezzo Unitario</th>
+	            <th>Prezzo Totale</th>
+	            <th>Azioni</th>
+	        </tr>
+	        <% if (cart != null) {
+	            for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
+	                int productId = entry.getKey();
+	                int quantity = entry.getValue();
+	                
+	                ProductBean product = null;
+	                try {
+	                    product = productDAO.doRetrieveByKey(productId);
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                }
+	                
+	                if (product != null) {
+	                    double totalPrice = product.getPrice() * quantity;
+	                    total += totalPrice;
+	        %>
+	        <tr>
+	            <td><%= product.getName() %></td>
+	            <td>
+	            	<div class="cart-quantity">
+	                <form action="updateCart.jsp" method="post">
+	                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+	                    <input type="number" name="quantity" value="<%= quantity %>" min="1" class="cart-quantity-input">
+	                    <input type="submit" value="Aggiorna">
+	                </form>
+	                </div>
+	            </td>
+	            <td><%= product.getPrice() %></td>
+	            <td><%= Math.floor(totalPrice * 100) / 100 %></td>
+	            <td>
+	                <form action="removeFromCart.jsp" method="post">
+	                    <input type="hidden" name="productId" value="<%= product.getId() %>">
+	                    <input type="submit" value="Rimuovi">
+	                </form>
+	            </td>
+	        </tr>
+	        <%          }
+	            }
+	        } %>
+	    </table>
+	    <div class="cart-table-total">
+		    <h2>Totale: <%= Math.floor(total * 100) / 100 %></h2>
+		
+			<form action="${pageContext.request.contextPath}/common/checkout.jsp" method="get">
+				<input type="submit" value="Procedi al Pagamento" class="">
+			</form>
+		
+			<form action="clearCart.jsp" method="post">
+				<input type="submit" value="Svuota Carrello">
+			</form>
+	    </div>
+    </div>
 </body>
 </html>

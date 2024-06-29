@@ -39,6 +39,23 @@ body{
 	}
 }
 
+table{
+	width: 100%;
+	border-collapse: collapse;
+	tr:nth-child(even) {background-color: #e3d5c8;}
+	tr:hover {background-color: coral;}
+}
+
+th{
+	height: 20px;
+	padding:5px
+}
+
+td{
+	font-size:12px;
+	padding: 2px;
+}
+
 h1{
 	font-family: "DIN";
 	font-weight: 800;
@@ -52,6 +69,42 @@ h1{
 	font-smooth: always;                  /* General */
 	
 	margin-bottom:25px;
+}
+
+input[type=text] {
+    padding:2px; 
+    border:2px solid grey; 
+    border-radius: 3px;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=number]{
+    padding:2px; 
+    border:2px solid grey; 
+    border-radius: 6px;
+}
+
+input[type=submit] {
+    padding:3px 15px; 
+    background:#3c7a89; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color:white;
+}
+
+button[type=submit] {
+    padding:3px 15px; 
+    background:#3c7a89; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    color:white;
 }
 
 .navbar {
@@ -340,7 +393,6 @@ h1{
 	border-collapse: collapse;
 	tr:nth-child(even) {background-color: #e3d5c8;}
 	tr:hover {background-color: coral;}
-
 }
 
 .admin-user-list th{
