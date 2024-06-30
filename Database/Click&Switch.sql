@@ -25,7 +25,7 @@ CREATE TABLE product (
 CREATE TABLE user_order (
     id INT PRIMARY KEY AUTO_INCREMENT,
     date_time DATETIME NOT NULL,
-    status ENUM('placed', 'shipped', 'delivered') NOT NULL,
+    status ENUM('pending', 'shipped', 'delivered', 'cancelled') NOT NULL,
     total DECIMAL(6,2) NOT NULL,
     username VARCHAR(50) NOT NULL,
     FOREIGN KEY (username) REFERENCES user_account(username)
@@ -64,7 +64,7 @@ VALUES
 -- Popolamento della tabella user_order
 INSERT INTO user_order (date_time, status, total, username)
 VALUES 
-    ('2024-05-01 10:00:00', 'placed', 129.98, 'user1'),
+    ('2024-05-01 10:00:00', 'pending', 129.98, 'user1'),
     ('2024-05-02 11:30:00', 'shipped', 29.99, 'user2');
 
 -- Popolamento della tabella order_items

@@ -7,9 +7,12 @@
     <title>Aggiunta Prodotto</title>
     <script src="${pageContext.request.contextPath}/scripts/addProduct.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css" type="text/css">
     <meta name="viewport" content="initial-scale=1, width=device-width">
 </head>
 <body>
+	<!-- Include della barra di navigazione -->
+    <jsp:include page="../navbar.jsp" />
     <h1>Aggiunta nuovo prodotto</h1>
     <form action="AddProduct" method="post" enctype="multipart/form-data">
     	<fieldset>
@@ -21,7 +24,7 @@
 			</div>
 			<div>
 				<label for="description">Descrizione:</label>
-	        	<input type="text" id="description" name="description" required>
+	        	<textarea id="description" name="description" rows="4" cols="50" required></textarea>
 			</div>
 			<div>
 	        	<label for="price">Prezzo:</label>
@@ -45,6 +48,7 @@
 			</div>
     	</fieldset>
         <button type="submit">Aggiungi Prodotto</button>
+        <div><a href="${pageContext.request.contextPath}/index.jsp">Ritorna alla Home</a></div>
     </form>
 
     <%-- Mostra eventuali messaggi di errore --%>

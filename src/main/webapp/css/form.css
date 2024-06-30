@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: 'Segoe'; /* Name your font family */
+  src: url('Segoe UI Symbol.ttf'); /* Locate the .ttf file within your directory*/
+}
+
 /* Stile generale per le form */
 form {
     max-width: 600px;
@@ -8,7 +13,7 @@ form {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe";
 }
 
 fieldset {
@@ -29,6 +34,9 @@ label {
     margin-bottom: 5px;
 }
 
+input{
+	margin-bottom:10px;
+}
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -92,8 +100,4 @@ input[type="reset"]:hover {
     h1{
     	font-size:24px;
     }
-}
-
-body{
-	margin:20px;
 }

@@ -28,7 +28,6 @@
 <body>
 	<!-- Include della barra di navigazione -->
     <jsp:include page="navbar.jsp" />
-	
 	<jsp:include page="banner.jsp" />
 	
 	<!-- Sezione dei prodotti -->
@@ -60,28 +59,6 @@
         <p>Non ci sono prodotti disponibili al momento.</p>
     <% } %>
 	</div>
-    
-    <!--  
-	<p>OLD PAGE</p>
-	<p></p>
-    <h1>Homepage</h1>
-    
-    <% if (currentUser != null) { %>
-        <p>Buongiorno, <%= currentUser.getName() %>!</p>
-        <p><a href="listaOrdini.jsp">Visualizza lista Ordini</a></p>
-        <% if (currentUser.getRole().equals("admin")) { %>
-        	<p>Sei un Admin!<p>
-        	<p><a href="listaProdottiAdmin.jsp">Modifica il catalogo</a></p>
-        	<p><a href="listaUtenti.jsp">Visualizza lista utenti</a></p>
-        	<p><a href="addProduct.jsp">Aggiungi un nuovo prodotto</a></p>
-        	
-        <% } %>
-        
-    <% } else { %>
-        <p>Benvenuto, ospite!</p>
-    <% } %>
-	
-	<h1>Benvenuto su Click &amp; Switch</h1>
-	-->
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

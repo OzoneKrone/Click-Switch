@@ -56,35 +56,6 @@
     <% } %>
 	</div>
 	
-	
-	<!--  
-	<p>OLD PAGE</p>
-    <h1>Lista Prodotti</h1>
-    <table border="1">
-        <tr>
-            <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>Immagine</th>
-            <th>Aggiungi al Carrello</th>
-        </tr>
-        <% for (ProductBean product : products) { %>
-            <tr>
-            	<%if (product.getIsAvailable()) {%>
-	                <td><%= product.getName() %></td>
-	                <td><%= product.getDescription() %></td>
-	                <td><%= product.getPrice() %></td>
-	                <td><img src=<%= product.getImageUrl() %> alt="Missing Image" width="300" ></td>
-	                <td>
-                    <form action="AddToCartServlet" method="post">
-                        <input type="hidden" name="productId" value="<%= product.getId() %>">
-                        <button type="submit">Aggiungi al Carrello</button>
-                    </form>
-               		</td>
-	            <%} %>
-            </tr>
-        <% } %>
-    </table>
-    -->
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

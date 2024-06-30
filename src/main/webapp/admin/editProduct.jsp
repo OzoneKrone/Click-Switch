@@ -27,32 +27,51 @@
 	<meta charset="ISO-8859-1">
 	<title>Modifica Prodotto</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css" type="text/css">
 </head>
 <body>
 	<!-- Include della barra di navigazione -->
     <jsp:include page="../navbar.jsp" />
 	
 	<h1>Modifica prodotto</h1>
-    <form action="${pageContext.request.contextPath}/EditProduct" method="post" enctype="multipart/form-data">
-    	<input type="hidden" id="id" name="id" value="<%=product.getId() %>">
-    	
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<%=product.getName() %>" required><br>
-
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" value="<%=product.getPrice() %>"required><br>
-
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" value="<%=product.getDescription() %>" required><br>
-
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" value="<%=product.getQuantity() %>" required><br>
+	<form action="${pageContext.request.contextPath}/EditProduct" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <input type="hidden" id="id" name="id" value="<%=product.getId() %>">
         
-        <label for="image">Carica una foto:</label>
-			<input type="file" id="image" name="image" class="formInput" value="<%=product.getImageUrl() %>" required accept="image/*"> <br>
+        <div>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="<%=product.getName() %>" 
+            	required onchange="validateFormElem(this, document.getElementById('errorName'), usernameErrorMessage)">
+            <span id="errorName"></span>
+        </div>
+		<div>
+			<label for="description">Descrizione:</label>
+	        <textarea id="description" name="description" rows="4" cols="50" required><%=product.getDescription() %></textarea>
+		</div>
+		<div>
+			<label for="price">Prezzo:</label>
+			<input type="text" id="price" name="price" value="<%=product.getPrice() %>"
+				required pattern="^[0-9]+$" onchange="validateFormElem(this, document.getElementById('errorPrice'), 
+				priceErrorMessage)">
+			<span id="errorPrice"></span>
+		</div>
+        <div>
+            <label for="quantity">Quantità:</label>
+            <input type="number" id="quantity" name="quantity" value="<%=product.getQuantity() %>" 
+            	required pattern="^[0-9]+$" onchange="validateFormElem(this, document.getElementById('errorQuantity'), 
+	        			quantityErrorMessage)">
+            <span id="errorQuantity"></span>
+        </div>
+        <div>
+            <label for="image">Carica una foto:</label>
+            <input type="file" id="image" name="image" class="formInput" value="<%=product.getImageUrl() %>" required accept="image/*">
+            <span id="errorImage"></span>
+        </div>
+    </fieldset>
+    <button type="submit">Conferma Modifiche</button>
+    <div><a href="${pageContext.request.contextPath}/index.jsp">Ritorna alla Home</a></div>
+	</form>
 
-        <button type="submit">Conferma Modifiche</button>
-    </form>
 
     <%-- Mostra eventuali messaggi di errore --%>
     <% String error = (String) request.getAttribute("error");
