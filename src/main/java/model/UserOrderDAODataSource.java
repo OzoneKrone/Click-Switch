@@ -319,4 +319,23 @@ public class UserOrderDAODataSource implements UserOrderDAO<UserOrderBean>{
         }
         return orders;
     }
+    
+    public void updateOrderStatus(int orderId, String status) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String updateSQL = "UPDATE " + UserOrderDAODataSource.TABLE_NAME + " SET status = ? WHERE id = ?";
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(updateSQL);
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, orderId);
+            preparedStatement.executeUpdate();
+        } finally {
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+            } finally {
+                if (connection != null) connection.close();
+            }
+        }
+    }
 }

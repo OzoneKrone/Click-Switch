@@ -7,6 +7,7 @@
 	<meta http-quiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Pagina di Login</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" href="css/form.css" type="text/css">
     <meta name="viewport" content="initial-scale=1, width=device-width">
 </head>
 
@@ -32,6 +33,7 @@ if(errors != null){
 	<input type="submit" value="Login"/>
 	<input type="reset" value="Reset"/>
 </fieldset>
+<div><a href="index.jsp">Ritorna alla Home</a></div>
 </form>
 <%
         String error = (String) request.getAttribute("error");
@@ -41,7 +43,5 @@ if(errors != null){
     <%
         }
     %>
-    
-<div><a href="index.jsp">Ritorna alla Home</a></div>
 </body>
 </html>

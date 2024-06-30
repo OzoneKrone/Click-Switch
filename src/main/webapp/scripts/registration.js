@@ -1,6 +1,6 @@
-const usernameErrorMessage = "Il nome utente può contenere solo caratteri alfanumerici";
-const nameErrorMessage = "Il nome utente può contenere solo caratteri alfanumerici";
-const emailErrorMessage = "The email field should be in the form username@domain.ext";
+const usernameErrorMessage = "Il nome utente può contenere solo caratteri alfanumerici!";
+const nameErrorMessage = "Il nome non può contenere caratteri speciali o numeri!";
+const emailErrorMessage = "L'email dovrebbe essere del tipo username@domain.ext";
 const emptyFieldErrorMessage = "Questo campo non può essere vuoto";
 const passwordErrorMessage= "La password deve contenere almeno 8 caratteri";
 const addressErrorMessage= "Indirizzo non valido";

@@ -7,6 +7,7 @@
     <title>Registrazione Utente</title>
     <script src="scripts/registration.js"></script>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/form.css" type="text/css">
     <meta name="viewport" content="initial-scale=1, width=device-width">
 </head>
 <body>
@@ -55,6 +56,7 @@
 				<input type="reset" value="Reset">
 			</div>
         </fieldset>
+        <div><a href="index.jsp">Ritorna alla Home</a></div>
     </form>
 </body>
 </html>

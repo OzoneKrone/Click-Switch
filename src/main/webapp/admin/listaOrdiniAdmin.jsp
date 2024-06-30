@@ -45,6 +45,27 @@
     <meta charset="UTF-8">
     <title>Lista Ordini Admin</title>
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script>
+        function updateOrderStatus(orderId) {
+        	var statusSelect = document.getElementById("status_" + orderId);
+            var status = statusSelect.value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "${pageContext.request.contextPath}/UpdateOrderStatusServlet", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        document.getElementById("statusMessage_" + orderId).innerText = "Stato aggiornato con successo!";
+                        // Aggiorna dinamicamente il selettore con lo stato appena aggiornato
+                        statusSelect.value = status; // Imposta il valore del selettore al nuovo stato
+                    } else {
+                        console.error("Errore durante l'aggiornamento dello stato dell'ordine.");
+                    }
+                }
+            };
+            xhr.send("orderId=" + orderId + "&status=" + status);
+        }
+    </script>
 </head>
 <body>
     <!-- Include della barra di navigazione -->
@@ -76,7 +97,7 @@
             <th>Data</th>
             <th>Stato</th>
             <th>Totale</th>
-            <th></th>
+            <th>Azioni</th>
         </tr>
         <% if (orders != null) { %>
             <% for (UserOrderBean order : orders) { %>
@@ -84,13 +105,25 @@
                     <td><%= order.getId() %></td>
                     <td><%= order.getUsername() %></td>
                     <td><%= order.getDateTime() %></td>
-                    <td><%= order.getStatus() %></td>
+                    <td>  
+                        <select id="status_<%= order.getId() %>" onchange="updateOrderStatus(<%= order.getId() %>)">
+						    <option value="pending" <%= order.getStatus().equals("pending") ? "selected" : "" %>>Pending</option>
+						    <option value="shipped" <%= order.getStatus().equals("shipped") ? "selected" : "" %>>Shipped</option>
+						    <option value="delivered" <%= order.getStatus().equals("delivered") ? "selected" : "" %>>Delivered</option>
+						    <option value="cancelled" <%= order.getStatus().equals("cancelled") ? "selected" : "" %>>Cancelled</option>
+						</select>
+                    </td>
                     <td><%= order.getTotal() %></td>
                     <td>
                         <form action="${pageContext.request.contextPath}/common/viewOrderDetails.jsp" method="post">
                             <input type="hidden" name="orderId" value="<%= order.getId() %>">
                             <button type="submit">Dettagli</button>
                         </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <div id="statusMessage_<%= order.getId() %>" style="color: green;"></div>
                     </td>
                 </tr>
             <% } %>
