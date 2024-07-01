@@ -25,7 +25,7 @@ CREATE TABLE product (
 CREATE TABLE user_order (
     id INT PRIMARY KEY AUTO_INCREMENT,
     date_time DATETIME NOT NULL,
-    status ENUM('pending', 'shipped', 'delivered', 'cancelled') NOT NULL,
+    status VARCHAR(50) NOT NULL,
     total DECIMAL(6,2) NOT NULL,
     username VARCHAR(50) NOT NULL,
     FOREIGN KEY (username) REFERENCES user_account(username)
