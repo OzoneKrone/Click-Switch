@@ -4,6 +4,7 @@
 <%
 	ProductBean product = (ProductBean) request.getSession().getAttribute("product");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>

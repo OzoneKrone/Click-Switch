@@ -29,13 +29,12 @@ body{
 	/* Font smoothing / Antialiasing */
 	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
 	-moz-osx-font-smoothing: grayscale;   /* For macOS */
-	font-smooth: always;                  /* General */
 	
 	padding:10px;
 	
 	margin: 0px 100px 0px 100px;
 	
-	a, a:visited {
+	a:visited {
 	  color: #19231a;
 	}
 }
@@ -84,9 +83,22 @@ h1{
 	/* Font smoothing / Antialiasing */
 	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
 	-moz-osx-font-smoothing: grayscale;   /* For macOS */
-	font-smooth: always;                  /* General */
 	
 	margin-bottom:25px;
+}
+
+h2{
+	font-family: "DIN";
+	font-weight: 800;
+	line-height: 24px;
+	font-size: 24px;
+	color: #19231a;
+	
+	/* Font smoothing / Antialiasing */
+	-webkit-font-smoothing: antialiased;  /* For Webkit browsers */
+	-moz-osx-font-smoothing: grayscale;   /* For macOS */
+	
+	margin-top: 10px;
 }
 
 input[type=text] {
@@ -138,6 +150,10 @@ button[type=submit] {
 .logo img {
     height: 40px;
     margin-left: 40px;
+}
+
+.small-logo{
+	display: none;
 }
 
 .links {
@@ -215,6 +231,7 @@ button[type=submit] {
     max-width: 100%;
     max-height: 200px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .product-name {
@@ -302,9 +319,9 @@ button[type=submit] {
 
 /* Prezzo del prodotto */
 .product-details-price {
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: bold;
-	margin-bottom: 20px;
+	margin-bottom: 16px;
 	color: #3c7a89;
 }
 
@@ -313,6 +330,7 @@ button[type=submit] {
 	font-size: 16px;
 	margin-bottom: 20px;
 	color: #19231a;
+	line-height: 24px;
 }
 
 /* Pulsante per aggiungere al carrello */
@@ -371,14 +389,14 @@ button[type=submit] {
 }
 
 #dropdown-user li:hover {
-  background-color: #3c7a89;
+	background-color: #3c7a89;
 }
 
 #dropdown-user li:hover a {
-  color: #ffffff;	
+	color: #ffffff;	
 }
 #menu-user:hover #dropdown-user {
-  	display: block;
+	display: block;
 }
 
 .admin-product-list{
@@ -626,7 +644,7 @@ textarea {
 	
 }
 
-@media screen and (max-width: 540px){
+@media screen and (min-width: 0px) and (max-width: 540px){
 	body{
 	padding:5px;
 	margin: 0px 5px 0px 5px;
@@ -643,6 +661,23 @@ textarea {
     
     padding: 10px;
     transition: transform 0.2s;
+	}
+	
+	.logo{
+    display: none;
+	}
+
+	.small-logo{
+	display: block;
+	}
+	
+	.small-logo img{
+	height: 40px;
+    margin-left: 10px;
+	}
+	
+	.actions{
+	margin-right: 10px;
 	}
 }
 

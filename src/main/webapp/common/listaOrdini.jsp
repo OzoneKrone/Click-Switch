@@ -56,7 +56,7 @@
     <h1>Lista Ordini</h1>
 
     <!-- Modulo per selezionare l'intervallo di date -->
-    <div><form method="get" action="listaOrdiniAdmin.jsp">
+    <div><form method="get" action="listaOrdini.jsp">
         <label for="startDate">Data inizio:</label>
         <input type="date" id="startDate" name="startDate" value="<%= startDateStr %>">
         

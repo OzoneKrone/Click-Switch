@@ -16,7 +16,7 @@ CREATE TABLE product (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
-    description VARCHAR(200),
+    description VARCHAR(500),
     quantity INT NOT NULL,
     is_available BOOL NOT NULL,
     image_url VARCHAR(255)
@@ -52,6 +52,7 @@ VALUES
 -- Popolamento della tabella product
 INSERT INTO product (name, price, description, quantity, is_available, image_url)
 VALUES 
+    ('Flame 60', 119.99, '6063 aluminum<br>6.5° degree typing angle<br>PCB: QMK/VIA Compatible, Daughter Board Type C design - Solder only<br>Gasket mount (poron gaskets)<br>3.5MM dampener between plate and PCB<br>1.5-2MM bottom case dampener<br>Width: 297.75MM or (11.7 inch)<br>Depth: 108.25MM or (4.2 inch)<br>Front height: 20MM or (0.7 inch)<br>Weight (without any kind of plate): 1.6KG or (3.5LBS)<br>Colours: Black, Blue, Wine Red, E-White (Soya)', 100, true, 'images/flame60.jpg'),
     ('Qisan 68', 59.99, 'Design mini e portatile, tastiera a due tasti con tasti meccanici OUTEMU (equivalente al modello Cherry MX)', 50, true, 'images/qisan.jpg'),
     ('Razer BlackWidow', 129.99, 'Tastiera meccanica da gaming con Razer Chroma™ RGB', 100, true, 'images/blackwidow.jpg'),
     ('Logitech G412', 79.99, 'G413 TKL SE include switch meccanici Tactile, rollover a 6 tasti anti-ghosting, copritasti in PBT e scocca robusta in lega di alluminio senza tastierino numerico.', 30, true, 'images/g412.jpg'),

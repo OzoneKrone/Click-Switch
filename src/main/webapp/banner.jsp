@@ -10,7 +10,7 @@
     ProductBean product = null;
     try {
         ProductDAODataSource productDAO = new ProductDAODataSource();
-        product = productDAO.doRetrieveByKey(5); // null indica nessun ordinamento
+        product = productDAO.doRetrieveByKey(1); // null indica nessun ordinamento
     } catch (SQLException e) {
         e.printStackTrace(); // Gestisci l'eccezione in modo appropriato
     }

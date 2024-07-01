@@ -15,6 +15,9 @@
 <body>
 	<nav class="navbar">
     <div class="logo">
+        <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo-with-text.png" alt="Logo"></a>
+    </div>
+    <div class="small-logo">
         <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" alt="Logo"></a>
     </div>
     <div class="links">

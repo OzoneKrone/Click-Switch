@@ -30,6 +30,7 @@
     <jsp:include page="navbar.jsp" />
 	<jsp:include page="banner.jsp" />
 	
+	<h2>Nuovi Prodotti</h2>
 	<!-- Sezione dei prodotti -->
     <div class="product-grid">
     <% if (products != null && !products.isEmpty()) {
