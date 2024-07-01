@@ -26,6 +26,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Modifica Prodotto</title>
+	<script src="${pageContext.request.contextPath}/scripts/addProduct.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css" type="text/css">
 </head>
@@ -51,13 +52,13 @@
 		<div>
 			<label for="price">Prezzo:</label>
 			<input type="text" id="price" name="price" value="<%=product.getPrice() %>"
-				required pattern="^[0-9]+$" onchange="validateFormElem(this, document.getElementById('errorPrice'), 
+				required pattern="^\d+([.]\d{1,2})?$" onchange="validateFormElem(this, document.getElementById('errorPrice'), 
 				priceErrorMessage)">
 			<span id="errorPrice"></span>
 		</div>
         <div>
             <label for="quantity">Quantità:</label>
-            <input type="number" id="quantity" name="quantity" value="<%=product.getQuantity() %>" 
+            <input type="text" id="quantity" name="quantity" value="<%=product.getQuantity() %>" 
             	required pattern="^[0-9]+$" onchange="validateFormElem(this, document.getElementById('errorQuantity'), 
 	        			quantityErrorMessage)">
             <span id="errorQuantity"></span>

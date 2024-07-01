@@ -1,5 +1,5 @@
 const nameErrorMessage = "Il nome utente può contenere solo caratteri alfanumerici";
-const priceErrorMessage = "Prezzo non valido";
+const priceErrorMessage = "Prezzo non valido (XXX.XX)";
 const quantityErrorMessage = "Quantità non valida";
 
 function validateFormElem(formElem, span, errorMessage) {

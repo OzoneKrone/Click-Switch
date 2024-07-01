@@ -60,7 +60,16 @@ VALUES
     ('Akko 3502', 200.99, 'Tastiera Meccanica Premium Personalizzabile. Switch Holy Pandas lubrificati.', 100, true, 'images/akko.jpg'),
     ('Cherry Red Switches', 29.99, '5-Pin Keyboard switches (Pack of 25)', 100, true, 'images/red.jpg'),
     ('NK65', 119.99, 'Complete DYI Keyboard Kit', 100, true, 'images/nk65.jpg'),
-    ('GMK65', 119.99, 'Barebone DYI Keyboard Kit', 100, true, 'images/gmk65.jpg');
+    ('GMK TIK R2', 119.99, 'Barebone DYI Keyboard Kit', 100, true, 'images/gmk65.jpg'),
+    ('CYL Nord', 149.99, 'GMK ABS Double-Shot Keycaps', 100, true, 'images/cyl.jpg'),
+    ('CYL Phantom R2', 149.99, 'GMK ABS Double-Shot Keycaps', 120, true, 'images/phant.jpg'),
+    ('KAT Milkshake', 49.99, 'PBT Double-Shot Keycaps', 20, true, 'images/milk.jpg'),
+    ('Gateron Quinn Switches', 39.99, '36 Per Box', 220, true, 'images/quinn.jpg'),
+    ('Qmx Stabilizers', 39.99, '6 Per Box', 2220, true, 'images/stabs.jpg'),
+    ('WT60-C PCB', 29.99, 'Introducing the WT60-C PCB. Designed by wilba.tech', 2220, true, 'images/pcb.jpg'),
+    ('Deskpad', 29.99, 'In collaboration with randomfrankp. Now featuring a new rough texture!', 50, true, 'images/pad.jpg'),
+    ('Aluminum Lubrication Station', 49.99, 'Say goodbye to messy applications and hello to smooth performance. Get your switches organized and lubricated with our Lubricant Station.', 30, true, 'images/alum.jpg'),
+    ('Lubricants', 9.99, 'Don\'t let friction slow you down, glide through tasks with ease by using our versatile lubricants for switches, springs, and stabilizers.', 20, true, 'images/lube.jpg');
 
 -- Popolamento della tabella user_order
 INSERT INTO user_order (date_time, status, total, username)

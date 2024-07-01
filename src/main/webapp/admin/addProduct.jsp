@@ -29,7 +29,7 @@
 			<div>
 	        	<label for="price">Prezzo:</label>
 	        	<input type="text" id="price" name="price" 
-	        		required pattern="^[0-9]+$" onchange="validateFormElem(this, document.getElementById('errorPrice'), 
+	        		required pattern="^\d+([.]\d{1,2})?$" onchange="validateFormElem(this, document.getElementById('errorPrice'), 
 	        			priceErrorMessage)">
 	        		<span id="errorPrice"></span>
 			</div>
