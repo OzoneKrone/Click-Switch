@@ -59,12 +59,33 @@ Altri elementi chiave:
 
 ---
 
+## 📸 Screenshots
+
+
+### Home
+<img src="docs/images/Homepage.png" alt="Home" width="400"/>
+
+###  Carrello
+<img src="docs/images/Carrello.png" alt="Carrello" width="400"/>
+
+###  Pagina Prodotto
+<img src="docs/images/Pagina Prodotto.png" alt="Carrello" width="400"/>
+
+###  Gestione Prodotti Admin
+<img src="docs/images/GestioneProdotti.png" alt="Carrello" width="400"/>
+
+###  Pagina Ordini Admin
+<img src="docs/images/OrdiniAdmin.png" alt="Carrello" width="400"/>
+
+---
+
 ## 🔒 Sicurezza & Validazioni
 
 - Controllo accessi su tutte le pagine riservate
 - Validazione client-side con JavaScript
 - Focus automatico sui campi attivi
 - Gestione errori e feedback utente via DOM
+
 
 ---
 
