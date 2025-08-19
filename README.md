@@ -1,4 +1,4 @@
-# 🛒 eCommerce Web Application – Tecnologie Software Web
+# 🛒 Click\&Switch - eCommerce Web Application – Tecnologie Software Web
 
 Questo progetto è stato sviluppato come parte del corso di **Tecnologie Software Web** presso l'Università di Salerno (Fisciano). L'applicazione è un sito di e-commerce completo, progettato per essere **dinamico**, **responsive**, con **persistenza dei dati** e **interfacce distinte per utenti e amministratori**.
 
